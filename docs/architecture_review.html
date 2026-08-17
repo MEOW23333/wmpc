@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang= zh-CN><meta charset=utf-8><title>WMPC 架构整理</title>
+<style>body{font-family:system-ui,sans-serif;max-width:960px;margin:2rem auto;line-height:1.6;color:#202124}section{border:1px solid #ddd;border-radius:12px;padding:1rem 1.25rem;margin:1rem 0}pre{background:#f6f8fa;padding:1rem;overflow:auto}.good{color:#146c43}.warn{color:#9a6700}</style>
+<h1>WMPC 架构整理</h1>
+<section><h2>目标</h2><p>把旧 PALS 中分散的稀疏预条件子、侧车导出、原生接口和实验记录收敛到一个可独立验证的项目目录，删除轨迹、缓存和历史生成物。</p></section>
+<section><h2>当前结构</h2><pre>线性系统契约
+  ├─ 稀疏学习型 Schwarz 模块
+  │    ├─ 固定块规划
+  │    └─ 局部 LU 与行和回退
+  ├─ 侧车导出/批量生成模块
+  └─ 原生 GMRES / 安全侧车接口
+结果摘要与检查点 ── 独立于代码</pre></section>
+<section><h2>深化后的接口</h2><p class=good>线性系统契约是唯一数据接缝：矩阵、右端项、初值、节点布局和指纹都在进入预条件器前校验。侧车生成器只负责把契约实例化为文件，原生接口只负责消费已校验文件。</p><p class=warn>联合 warmup 仍是待补证路径；历史向量与当前网表不一致时必须拒绝注入。</p></section>
+<section><h2>删除检验</h2><p>删除旧实验轨迹不会影响 WMPC 的代码、单元测试和小型结果复现；删除线性系统契约则会把维数、布局和指纹校验重新散落到多个调用者，因此该模块具有足够深度。</p></section>
+</html>
