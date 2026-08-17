@@ -1,7 +1,10 @@
 release/
+debug/
+build/
 experiments/
 pals_data/
 precondition_experiments/
+autom4te.cache/
 *.log
 *.pyc
 __pycache__/
