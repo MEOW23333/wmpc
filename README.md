@@ -22,9 +22,13 @@ WMPC 是当前 PALS 课题的精简、可复现实验项目。只保留原生求
 
 进入 /home/ZhangLexin/PALS/wmpc 后，使用 PALS_env 环境运行：
 
-    /home/ZhangLexin/miniconda3/envs/PALS_env/bin/python3 -m pytest pypath/preconditioner/tests/test_sparse_learned_schwarz_v1.py
+    PYTHONPATH=. /home/ZhangLexin/miniconda3/envs/PALS_env/bin/python3 pypath/preconditioner/tests/test_sparse_learned_schwarz_v1.py
 
-原生程序重新编译时使用本目录的构建骨架，生成的二进制放在 release/src/ngspice。实验先决条件写在 docs/实验计划_2026_08_17.md。
+该测试应报告 20/20 通过。结果文件的完整性可用以下命令复核：
+
+    sha256sum -c results/SHA256SUMS.txt
+
+原生程序重新编译时使用本目录的构建骨架，生成的二进制放在 build/src/ngspice。实验先决条件写在 docs/实验计划_2026_08_17.md。
 
 ## 研究边界
 
