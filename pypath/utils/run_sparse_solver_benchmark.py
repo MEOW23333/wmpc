@@ -15,7 +15,11 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from pypath.precondition_construction import SPARSE_SEMANTIC_MODES  # noqa: E402
-from pypath.utils.sparse_gmres_prototype import _find_steps, evaluate_step  # noqa: E402
+from pypath.utils.sparse_gmres_prototype import (  # noqa: E402
+    _find_steps,
+    _load_workpoint_manifest,
+    evaluate_step,
+)
 
 LOCAL_SCHUR_MODE = 'local_sparse_schur_sparse'
 SEMANTIC_MODES = SPARSE_SEMANTIC_MODES
@@ -132,17 +136,40 @@ def _resolve_netlist(args: argparse.Namespace, circuit_id: int) -> str:
 def _selected_steps(args: argparse.Namespace) -> List[Dict[str, Any]]:
     trajectory_dir = _resolve_path(args.trajectory_dir)
     selected: List[Dict[str, Any]] = []
+    manifest_path = str(getattr(args, 'workpoint_manifest', '') or '').strip()
+    manifest_by_circuit = (
+        _load_workpoint_manifest(_resolve_path(manifest_path))
+        if manifest_path
+        else {}
+    )
     wanted_steps = None if str(args.steps).strip().lower() in {'', 'all'} else set(_ints(args.steps))
-    for cid in _ints(args.circuit_ids):
-        steps = _find_steps(trajectory_dir, cid, max(int(args.max_steps), 1000000))
+    circuit_ids = (
+        sorted(int(value) for value in manifest_by_circuit)
+        if manifest_by_circuit
+        else _ints(args.circuit_ids)
+    )
+    for cid in circuit_ids:
+        steps = _find_steps(
+            trajectory_dir,
+            int(cid),
+            max(int(args.max_steps), 1000000),
+            requested_workpoints=(
+                manifest_by_circuit.get(int(cid))
+                if manifest_by_circuit
+                else None
+            ),
+        )
         per_circuit_count = 0
         for idx, step in enumerate(steps):
-            if wanted_steps is not None and idx not in wanted_steps:
-                continue
-            if wanted_steps is None and per_circuit_count >= int(args.max_steps):
-                break
+            if not manifest_by_circuit:
+                if wanted_steps is not None and idx not in wanted_steps:
+                    continue
+                if wanted_steps is None and per_circuit_count >= int(args.max_steps):
+                    break
             row = dict(step)
-            row['selected_step_index'] = int(idx)
+            row['selected_step_index'] = int(
+                step.get('_workpoint_manifest_index', idx)
+            )
             row['netlist_path'] = _resolve_netlist(args, int(cid))
             selected.append(row)
             per_circuit_count += 1
@@ -166,6 +193,8 @@ def _task_args(args: argparse.Namespace, task: Dict[str, Any]) -> Dict[str, Any]
         'semantic_boundary_max_block_size': int(args.semantic_boundary_max_block_size),
         'semantic_max_blocks': int(args.semantic_max_blocks),
         'semantic_uncovered_policy': args.semantic_uncovered_policy,
+        'semantic_coarse_max_condition': float(args.semantic_coarse_max_condition),
+        'semantic_coarse_rank_tol': float(args.semantic_coarse_rank_tol),
         'sparse_schur_edge_budget': int(task.get('selected_edge_budget') or args.default_selected_edge_budget),
         'local_schur_budget_multiplier': float(args.local_schur_budget_multiplier),
         'sparse_schur_candidate_edge_limit': int(args.sparse_schur_candidate_edge_limit),
@@ -438,6 +467,7 @@ def main() -> None:
     parser.add_argument('--trajectory-dir', default='')
     parser.add_argument('--netlist-dir', default='')
     parser.add_argument('--netlist-path', default='')
+    parser.add_argument('--workpoint-manifest', default='')
     parser.add_argument('--circuit-ids', default='')
     parser.add_argument('--steps', default='0')
     parser.add_argument('--max-steps', type=int, default=0)
@@ -465,6 +495,8 @@ def main() -> None:
     parser.add_argument('--semantic-boundary-max-block-size', type=int, default=192)
     parser.add_argument('--semantic-max-blocks', type=int, default=0)
     parser.add_argument('--semantic-uncovered-policy', default='row_sum')
+    parser.add_argument('--semantic-coarse-max-condition', type=float, default=1.0e12)
+    parser.add_argument('--semantic-coarse-rank-tol', type=float, default=1.0e-10)
     parser.add_argument('--local-schur-budget-multiplier', type=float, default=2.0)
     parser.add_argument('--sparse-schur-candidate-edge-limit', type=int, default=16384)
     parser.add_argument('--sparse-schur-diagonal-shift', type=float, default=1e-8)

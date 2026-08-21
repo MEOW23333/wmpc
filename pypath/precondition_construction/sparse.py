@@ -21,6 +21,8 @@ from pypath.preconditioner.sparse_learned_schwarz import (
 SPARSE_SEMANTIC_MODES = {
     'learned_schwarz_v1_sparse',
     'semantic_cell_core_sparse',
+    'semantic_coarse_r1_sparse',
+    'semantic_coarse_r2_sparse',
     'local_sparse_schur_sparse',
     'learned_local_sparse_schur_sparse',
     'learned_sparse_schur_safe_add_sparse',
@@ -907,6 +909,43 @@ def build_sparse_semantic_preconditioner(
     }
     if mode == 'semantic_cell_core_sparse':
         return LinearOperator(matrix.shape, matvec=core.apply, dtype=matrix.dtype), info
+    if mode in {'semantic_coarse_r1_sparse', 'semantic_coarse_r2_sparse'}:
+        boundary_blocks, boundary_debug = _extract_semantic_blocks_sparse(
+            matrix=matrix,
+            node_map=node_map,
+            netlist_path=netlist_path,
+            semantic_mode='cell_core_plus_onehop_boundary',
+            max_block_size=int(getattr(args, 'semantic_boundary_max_block_size', 128)),
+            min_block_size=int(getattr(args, 'semantic_min_block_size', 2)),
+            max_blocks=int(getattr(args, 'semantic_max_blocks', 0)),
+        )
+        from pypath.preconditioner.semantic_coarse_space import (
+            build_semantic_coarse_operator,
+        )
+
+        mode_count = 1 if mode.endswith('r1_sparse') else 2
+        operator, coarse_info = build_semantic_coarse_operator(
+            matrix=matrix,
+            local_apply=core.apply,
+            coarse_blocks=boundary_blocks,
+            mode_count=mode_count,
+            max_condition=float(getattr(args, 'semantic_coarse_max_condition', 1.0e12)),
+            rank_tol=float(getattr(args, 'semantic_coarse_rank_tol', 1.0e-10)),
+            semantic_mode=mode,
+        )
+        info['boundary_debug'] = boundary_debug
+        coarse_public = {
+            key: value
+            for key, value in coarse_info.items()
+            if key != 'operator_state'
+        }
+        state = coarse_info.get('operator_state')
+        if state is not None:
+            state.info = coarse_public
+            state.metadata()
+        info['coarse'] = coarse_public
+        info['fallback_reason'] = coarse_info.get('fallback_reason')
+        return operator, info
     boundary_blocks, boundary_debug = _extract_semantic_blocks_sparse(
         matrix=matrix,
         node_map=node_map,

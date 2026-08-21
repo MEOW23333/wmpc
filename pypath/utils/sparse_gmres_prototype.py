@@ -721,6 +721,8 @@ def main() -> None:
     parser.add_argument('--semantic-boundary-max-block-size', type=int, default=128)
     parser.add_argument('--semantic-max-blocks', type=int, default=0)
     parser.add_argument('--semantic-uncovered-policy', choices=['row_sum', 'jacobi_diagonal', 'identity'], default='row_sum')
+    parser.add_argument('--semantic-coarse-max-condition', type=float, default=1.0e12)
+    parser.add_argument('--semantic-coarse-rank-tol', type=float, default=1.0e-10)
     parser.add_argument('--sparse-schur-edge-budget', type=int, default=64)
     parser.add_argument('--local-schur-budget-multiplier', type=float, default=2.0)
     parser.add_argument('--sparse-schur-candidate-edge-limit', type=int, default=512)
