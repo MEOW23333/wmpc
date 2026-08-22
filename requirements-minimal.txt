@@ -1,0 +1,11 @@
+# WMPC 最小运行依赖；深度学习框架按目标服务器的 CUDA 驱动选择安装来源。
+numpy>=2.0,<3
+scipy>=1.13,<2
+torch>=2.5,<3
+torch-geometric>=2.6,<3
+networkx>=3,<4
+pandas>=2,<3
+scikit-learn>=1.4,<2
+sympy>=1.12,<2
+tqdm>=4.60,<5
+matplotlib>=3.8,<4

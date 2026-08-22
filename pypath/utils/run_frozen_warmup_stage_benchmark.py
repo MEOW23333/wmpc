@@ -132,7 +132,7 @@ def vector(path):
     return values
 
 
-def scan_traj(root, circuit_ids):
+def scan_traj(root, circuit_ids, include_zero_gmin=False):
     chosen, skipped, wanted = {}, Counter(), set(circuit_ids)
     for path in sorted(root.glob("circuit_*_time_*_gmin_*_iter_*.txt")):
         match = TRAJ_RE.match(path.name)
@@ -141,7 +141,7 @@ def scan_traj(root, circuit_ids):
         circuit_id, time_value, gmin_value, iteration = int(match.group(1)), float(match.group(2)), float(match.group(3)), int(match.group(4))
         if circuit_id not in wanted:
             continue
-        if gmin_value <= 0:
+        if gmin_value < 0 or (gmin_value == 0 and not include_zero_gmin):
             skipped["zero_gmin"] += 1
             continue
         key = skey(circuit_id, time_value, gmin_value)
@@ -201,7 +201,7 @@ def prepare(args):
     if output.exists():
         raise FileExistsError(f"output exists: {output}")
     circuit_ids = parse_ids(args.circuit_ids)
-    trajectories, skipped = scan_traj(traj_root, circuit_ids)
+    trajectories, skipped = scan_traj(traj_root, circuit_ids, include_zero_gmin=bool(args.include_zero_gmin))
     warmups, unavailable, selected = scan_warm(warm_root, circuit_ids), Counter(), []
     for circuit_id in circuit_ids:
         candidates = sorted((row for row in trajectories.values() if row["circuit_id"] == circuit_id), key=lambda row: (row["time"], -row["gmin_val"], row["iteration"]))
@@ -402,6 +402,7 @@ def main():
     parser.add_argument("--gmres-max-iters", type=int, default=500)
     parser.add_argument("--gmres-rtol", type=float, default=1e-8)
     parser.add_argument("--gmres-atol", type=float, default=1e-10)
+    parser.add_argument("--include-zero-gmin", action="store_true", help="允许使用零 gmin 工作点；默认仍跳过零 gmin")
     parser.add_argument("--provenance-path", action="append", default=[])
     args = parser.parse_args()
     if args.prepare_only:

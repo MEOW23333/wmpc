@@ -16,7 +16,7 @@ DATA_LOCATION = os.path.join(PROJECT_LOCATION, "experiments", "default", "propos
 
 CDL_PATH = os.path.join(PROJECT_LOCATION, "40nm", "scc40nll_vhsc50_rvt.cdl")
 LIB_PATH = os.path.join(PROJECT_LOCATION, "40nm", "l0040ll_v1p15.lib")
-NGSPICE_EXECUTABLE = os.path.join(COMPILE_LOCATION, "src", "ngspice")
+NGSPICE_EXECUTABLE = os.environ.get("WMPC_NGSPICE_EXECUTABLE", os.path.join(COMPILE_LOCATION, "src", "ngspice"))
 
 JSON_DIR = "training_data"
 NETLIST_DIR = "generated_netlists"

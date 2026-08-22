@@ -9,3 +9,10 @@ autom4te.cache/
 *.pyc
 __pycache__/
 .tmp/
+data/
+results/runs/
+debug-out*.txt
+.ipynb_checkpoints/
+*.egg-info/
+.cache/
+results/semantic_coarse_space_pilot_*/
