@@ -29,6 +29,46 @@ SPARSE_SEMANTIC_MODES = {
     'learned_sparse_schur_safe_add_probe_sparse',
 }
 
+INTERFACE_LOW_RANK_MODE_PREFIX = 'interface_basis_'
+for _basis_name in (
+    'constant',
+    'graph_laplacian',
+    'snapshot_pod',
+    'schur_low_rank',
+):
+    for _rank in (1, 2, 4):
+        SPARSE_SEMANTIC_MODES.add(
+            f'{INTERFACE_LOW_RANK_MODE_PREFIX}{_basis_name}_r{_rank}_sparse'
+        )
+    SPARSE_SEMANTIC_MODES.add(
+        f'{INTERFACE_LOW_RANK_MODE_PREFIX}{_basis_name}_sparse'
+    )
+
+
+def _parse_interface_low_rank_mode(mode: str) -> Optional[Tuple[str, int]]:
+    """解析接口低秩基模式名，返回（基方法，秩）。"""
+    raw = str(mode)
+    if not raw.startswith(INTERFACE_LOW_RANK_MODE_PREFIX):
+        return None
+    body = raw[len(INTERFACE_LOW_RANK_MODE_PREFIX):]
+    if not body.endswith('_sparse'):
+        return None
+    body = body[:-len('_sparse')]
+    parts = body.rsplit('_r', 1)
+    if len(parts) == 2 and parts[1].isdigit():
+        name, rank_raw = parts
+        rank = max(int(rank_raw), 1)
+    else:
+        name, rank = body, 1
+    aliases = {
+        'constant': 'constant',
+        'graph_laplacian': 'graph_laplacian',
+        'snapshot_pod': 'snapshot_pod',
+        'schur_low_rank': 'schur_slow_eig',
+    }
+    method = aliases.get(name)
+    return None if method is None else (method, rank)
+
 def semantic_netlist_path(args: argparse.Namespace) -> str:
     raw = str(getattr(args, 'netlist_path', '') or '').strip()
     if raw:
@@ -995,6 +1035,61 @@ def build_sparse_semantic_preconditioner(
     )
     info['boundary_debug'] = boundary_debug
     info['schur'] = schur.metadata()
+    low_rank_spec = _parse_interface_low_rank_mode(mode)
+    if low_rank_spec is not None:
+        basis_method, basis_rank = low_rank_spec
+        from pypath.preconditioner.interface_low_rank_basis import (
+            InterfaceLowRankSchurPreconditioner,
+            build_exact_interface_schur,
+        )
+
+        exact_target = None
+        exact_target_error = None
+        try:
+            exact_target = build_exact_interface_schur(
+                matrix,
+                schur.core_rows,
+                schur.interface_rows,
+            )
+        except Exception as exc:
+            exact_target_error = repr(exc)
+        snapshots = None
+        snapshot_path = str(
+            getattr(args, 'interface_basis_snapshot_path', '') or ''
+        ).strip()
+        if basis_method == 'snapshot_pod' and snapshot_path:
+            try:
+                with np.load(snapshot_path, allow_pickle=False) as payload_npz:
+                    key = f"circuit_{int(step.get('circuit_id', 0))}"
+                    if key in payload_npz.files:
+                        snapshots = np.asarray(payload_npz[key], dtype=np.float64)
+                    else:
+                        raise KeyError(key)
+            except Exception as exc:
+                info['snapshot_load_error'] = repr(exc)
+        elif basis_method == 'snapshot_pod':
+            info['snapshot_load_error'] = 'snapshot_path_not_configured'
+        low_rank = InterfaceLowRankSchurPreconditioner(
+            base=schur,
+            method=basis_method,
+            requested_rank=basis_rank,
+            snapshots=snapshots,
+            exact_target=exact_target,
+            max_condition=float(
+                getattr(args, 'interface_basis_max_condition', 1.0e12)
+            ),
+            rank_tol=float(
+                getattr(args, 'interface_basis_rank_tol', 1.0e-10)
+            ),
+        )
+        low_rank_info = low_rank.metadata()
+        low_rank_info['exact_target_error'] = exact_target_error
+        info['interface_low_rank'] = low_rank_info
+        info['fallback_reason'] = (
+            low_rank_info.get('basis', {}).get('fallback_reason')
+            or low_rank_info.get('corrector', {}).get('fallback_reason')
+        )
+        return LinearOperator(matrix.shape, matvec=low_rank.apply, dtype=matrix.dtype), info
     return LinearOperator(matrix.shape, matvec=schur.apply, dtype=matrix.dtype), info
 
 def build_preconditioner(matrix: sp.spmatrix, mode: str) -> tuple[Optional[LinearOperator], Dict[str, Any]]:
@@ -1031,8 +1126,10 @@ def build_preconditioner(matrix: sp.spmatrix, mode: str) -> tuple[Optional[Linea
 
 __all__ = [
     'SPARSE_SEMANTIC_MODES',
+    'INTERFACE_LOW_RANK_MODE_PREFIX',
     'SparseSemanticBlockJacobi',
     'SparseLocalSchurPreconditioner',
+    '_parse_interface_low_rank_mode',
     'build_preconditioner',
     'build_sparse_semantic_preconditioner',
     'semantic_netlist_path',

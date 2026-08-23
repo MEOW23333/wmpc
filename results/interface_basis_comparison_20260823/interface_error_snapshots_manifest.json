@@ -1,0 +1,1873 @@
+{
+  "schema_version": 1,
+  "generator": "generate_interface_error_snapshots.py",
+  "trajectory_dir": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory",
+  "netlist_dir": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/generated_netlists",
+  "workpoint_manifest": "/home/ZhangLexin/PALS/pals_data/runs/positive_gmin_full500_row_sum_screen_20260816/workpoint_manifest.json",
+  "history_limit": 8,
+  "iterations_per_history": 8,
+  "damping": 0.5,
+  "circuits": {
+    "0": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.99964865956982397e-03_iter_005.txt",
+      "target_gmin_val": 0.009999648659569824,
+      "interface_count": 11,
+      "history_candidate_count": 8,
+      "history_used_count": 8,
+      "snapshot_count": 64,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.99859471234162446e-03_iter_005.txt",
+          "gmin_val": 0.009998594712341624,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022890288526704928,
+            0.02931560886644826,
+            0.03924649964107301,
+            0.053982296976104995,
+            0.07594477773732651,
+            0.10885742855940699,
+            0.1582395663688965,
+            0.23224393070650845
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.99438003415553146e-03_iter_005.txt",
+          "gmin_val": 0.009994380034155531,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022879416841852594,
+            0.029302106878476692,
+            0.03922895992609782,
+            0.05395885728455388,
+            0.07591263972082989,
+            0.10881233813821349,
+            0.1581751285781722,
+            0.23215062508962117
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.97753907993273632e-03_iter_005.txt",
+          "gmin_val": 0.009977539079932736,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022835986235634532,
+            0.02924816560372859,
+            0.039158883647919016,
+            0.05386520349315756,
+            0.07578422474163422,
+            0.10863216058372391,
+            0.15791763106799733,
+            0.2317777589815664
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.91045856248860824e-03_iter_005.txt",
+          "gmin_val": 0.009910458562488608,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022663158334224078,
+            0.029033463267616612,
+            0.03887989510694013,
+            0.05349226234246569,
+            0.07527275151926023,
+            0.10791438821342413,
+            0.15689168903243253,
+            0.2302919827081386
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.64661619911199100e-03_iter_005.txt",
+          "gmin_val": 0.009646616199111991,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.02198593132643326,
+            0.028191400923143754,
+            0.03778470665724682,
+            0.052026928688095,
+            0.07326142148031493,
+            0.10508978148951927,
+            0.15285202539467402,
+            0.22443902273095065
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_8.65964323360065256e-03_iter_005.txt",
+          "gmin_val": 0.008659643233600653,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.01948855847965399,
+            0.025075463702541385,
+            0.03371793985513918,
+            0.04656685037985105,
+            0.06574298705432055,
+            0.0945027043537016,
+            0.13767770563058204,
+            0.2024152827976398
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_5.62341325190349097e-03_iter_005.txt",
+          "gmin_val": 0.005623413251903491,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.012162057029270198,
+            0.015824694527671684,
+            0.02150097452377417,
+            0.02997534801658692,
+            0.042659309111384054,
+            0.06171468630800807,
+            0.09035690007700685,
+            0.13335772785094593
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+          "gmin_val": 0.001,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0020365201499718036,
+            0.002689727642262067,
+            0.0037162362012544163,
+            0.005259972555057042,
+            0.007579936530158224,
+            0.011073444927029271,
+            0.016334227896466713,
+            0.024247775595795853
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "2": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 18,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            6.70128512764723e-05,
+            5.084637662939695e-05,
+            6.0854776890054116e-05,
+            8.638884649764952e-05,
+            0.00012690751557442262,
+            0.00018824661048135634,
+            0.000280535000688234,
+            0.0004191832037772039
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.828493092996986e-06,
+            4.011156961688668e-06,
+            5.81957527567079e-06,
+            8.5416783281634e-06,
+            1.2633516978587346e-05,
+            1.8783463879647645e-05,
+            2.8022799006980015e-05,
+            4.189596598865172e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.815575243842493e-12,
+            4.002481501587141e-12,
+            5.811955441387093e-12,
+            8.537239806964305e-12,
+            1.2629310555986537e-11,
+            1.8780885523309523e-11,
+            2.802095528196298e-11,
+            4.189577829706079e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            7.963722399687265,
+            3.981861443489458,
+            1.9909259758346225,
+            0.9954575259310201,
+            0.4977243221531944,
+            0.24886059376752342,
+            0.12443518652303044,
+            0.062236735840973965
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "4": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 26,
+      "history_candidate_count": 8,
+      "history_used_count": 8,
+      "snapshot_count": 64,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_2.37137370566165564e-06_iter_005.txt",
+          "gmin_val": 2.3713737056616556e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            4.743842864467768e-06,
+            6.55385239748532e-06,
+            0.0017238932178454118,
+            0.5047676029435518,
+            5.855092462001344,
+            555.6036520569709,
+            158673.40650568725,
+            29964343.478102937
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.05544960087860316e-06_iter_005.txt",
+          "gmin_val": 1.0554496008786032e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.111182899877164e-06,
+            6.699071509159683e-06,
+            0.00019347791163965955,
+            0.49425863271249754,
+            31.88002580254929,
+            40022.09288357673,
+            2780774.12307151,
+            3167194955.9111114
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.00846797059265945e-06_iter_005.txt",
+          "gmin_val": 1.0084679705926594e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0667157701179547e-06,
+            0.003012666390326689,
+            0.142806200083948,
+            316.34839208589733,
+            31347.342740242468,
+            30635356.690172456,
+            3297959016.8844633,
+            2884702768059.6006
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0998853419390983e-06,
+            0.00023968526574358697,
+            150.0081195427526,
+            38187256.986947544,
+            9723317150349.2,
+            2.475770690651391e+18,
+            6.303857436848448e+23,
+            1.605100938232118e+29
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_8.79702725486820494e-07_iter_005.txt",
+          "gmin_val": 8.797027254868205e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            81955727998738.8,
+            40977863999369.38,
+            20488931999684.87,
+            10244465999842.357,
+            5122232999921.18,
+            2561116499960.6226,
+            1280558249980.2415,
+            640279124990.1814
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_6.49381631576211470e-07_iter_005.txt",
+          "gmin_val": 6.493816315762115e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.2935609042076507e-05,
+            0.06613426048453346,
+            2982.0099875314118,
+            134863299.05277154,
+            6099238301757.711,
+            2.7584011477645763e+17,
+            1.2474962471483502e+22,
+            5.641843964186694e+26
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_5.09367521678013632e-07_iter_005.txt",
+          "gmin_val": 5.093675216780136e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4357022405608354e-05,
+            0.13884971140447225,
+            18784.39166590421,
+            2542487945.8339887,
+            344128362350272.8,
+            4.657812830830647e+19,
+            6.304397643791611e+24,
+            8.533067148714174e+29
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_5.78782704599540974e-12_iter_005.txt",
+          "gmin_val": 5.78782704599541e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.1544137081029165e-11,
+            1.538473388784934e-11,
+            2.135295290924082e-11,
+            3.029530607449143e-11,
+            4.3790393592359636e-11,
+            6.411698099002481e-11,
+            9.477367351500263e-11,
+            1.4091679488492019e-10
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "8": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 28,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0024604122655739217,
+            0.001232710894613121,
+            0.0006238706911316854,
+            0.00033337198207040536,
+            0.00022737009316591136,
+            0.00024405072389881716,
+            0.00033565022675080205,
+            0.0004908162270707747
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.835178635777612e-05,
+            1.9645347153205277e-05,
+            1.1637470545806594e-05,
+            1.089269415572616e-05,
+            1.4716794272444337e-05,
+            2.1668015740412574e-05,
+            3.2325568892945094e-05,
+            4.83620413951293e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.1713642377623495e-12,
+            4.53016209208919e-12,
+            6.618272801843375e-12,
+            9.769706298193695e-12,
+            1.4509226493320505e-11,
+            2.1628338565039255e-11,
+            3.2314246602707296e-11,
+            4.835883403669319e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            731342431687.2169,
+            365671215843.61993,
+            182835607921.8015,
+            91417803960.91748,
+            45708901980.45409,
+            22854450990.226738,
+            11427225495.107487,
+            5713612747.56443
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "11": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 22,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.03904416221718385,
+            0.019522265002564463,
+            0.009761589022546797,
+            0.004881881423508554,
+            0.002443727407499636,
+            0.0012299292006710267,
+            0.0006413167067444483,
+            0.0004065926949762147
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.5425052400922033e-05,
+            1.2952446041682858e-05,
+            7.336275524471672e-06,
+            6.123610099212718e-06,
+            7.733198404961833e-06,
+            1.1112555020132892e-05,
+            1.6389292286824628e-05,
+            2.4365513824270974e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.992759536458377e-12,
+            2.654955051667296e-12,
+            3.6796089728613e-12,
+            5.223718585705049e-12,
+            7.557697747295617e-12,
+            1.1073257153887274e-11,
+            1.6379217701144637e-11,
+            2.436427074709428e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2199796660049757.5,
+            1099901837719706.1,
+            549953646888008.56,
+            274977611383888.38,
+            137489390504492.62,
+            68745080614649.6,
+            34372635604359.387,
+            17186338566346.57
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "14": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 23,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0007041950942140119,
+            0.0003546329304070337,
+            0.0001841827086132026,
+            0.00010623537755904588,
+            7.714892057310258e-05,
+            7.05860355415533e-05,
+            7.175718132444892e-05,
+            7.516060157166486e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4144279440677109e-06,
+            1.608406967031466e-06,
+            1.8720179442690877e-06,
+            2.168214361696896e-06,
+            2.483299932742551e-06,
+            2.8119830702749157e-06,
+            3.1521113352328913e-06,
+            3.502841820372726e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4069882681594505e-12,
+            1.6195273911588084e-12,
+            1.8831940007681205e-12,
+            2.1764410342920693e-12,
+            2.4997408201608247e-12,
+            2.827602035584053e-12,
+            3.1583084302598517e-12,
+            3.5045326572384105e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            8250168195836911.0,
+            4127662109041587.0,
+            2060991157225498.5,
+            1030361915286554.9,
+            515044599259138.0,
+            257725602920986.2,
+            128896565518734.72,
+            64398320846869.11
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "18": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 19,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.00020216305642428847,
+            0.00010428103055272883,
+            6.313852184625934e-05,
+            5.8684515736339203e-05,
+            7.641710000058558e-05,
+            0.00010942922799663387,
+            0.00016039100253504194,
+            0.00023718666106747313
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.9397808859871243e-05,
+            1.49073966636214e-05,
+            8.20420241044007e-06,
+            6.353912450364903e-06,
+            7.682373903104943e-06,
+            1.091413828720907e-05,
+            1.6011971962993224e-05,
+            2.370061536205653e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.98894468373075e-12,
+            2.6445075520834315e-12,
+            3.6465588158240934e-12,
+            5.164137182468946e-12,
+            7.450846441814065e-12,
+            1.0868517177878666e-11,
+            1.600314107137285e-11,
+            2.369665856766599e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            204365857168952.66,
+            102158249528209.44,
+            51096826517550.81,
+            25572853973165.7,
+            12793615280482.236,
+            6400728017962.848,
+            3202062160629.033,
+            1601855502813.821
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "19": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 10,
+      "history_candidate_count": 8,
+      "history_used_count": 8,
+      "snapshot_count": 64,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            6.74566248555426e-05,
+            0.0001890791905718668,
+            0.0006208197129746741,
+            0.0018372114397828968,
+            0.005321200628883545,
+            0.015326584924367774,
+            0.04406906075754596,
+            0.12663836042795856
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0967030250298508e-06,
+            2.5719163695767484e-06,
+            3.571528828842027e-06,
+            5.127654574190579e-06,
+            7.475879372548406e-06,
+            1.100750054366625e-05,
+            1.631723943570755e-05,
+            2.4296668993742438e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000022e-07_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000302327161424e-07,
+            2.6667151699668116e-07,
+            3.699496102701254e-07,
+            5.250825030105563e-07,
+            7.58300346015139e-07,
+            1.1096266937827915e-06,
+            1.6388758796495266e-06,
+            2.4353299462532665e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.10111988353428680e-12_iter_005.txt",
+          "gmin_val": 7.101119883534287e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            7.544696726947004e-11,
+            8.300875585452233e-10,
+            1.049287426204388e-09,
+            1.1198012417868619e-09,
+            1.1603023800319108e-09,
+            1.2020639928193697e-09,
+            1.2543681409756218e-09,
+            1.321673916531986e-09
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.10109880861833767e-12_iter_005.txt",
+          "gmin_val": 7.101098808618338e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.695044135741364e-11,
+            6.638564757605868e-10,
+            8.396894267949604e-10,
+            8.960625166059622e-10,
+            9.285327542498886e-10,
+            9.622698645250436e-10,
+            1.005130800871866e-09,
+            1.061417130884365e-09
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.10093021154243124e-12_iter_005.txt",
+          "gmin_val": 7.100930211542431e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            4.741211776477844e-11,
+            1.0509162154936977e-09,
+            1.329164513859739e-09,
+            1.4188082605231362e-09,
+            1.4702487944354377e-09,
+            1.5229286818992538e-09,
+            1.588244034395778e-09,
+            1.6710238297455357e-09
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.09960030828445328e-12_iter_005.txt",
+          "gmin_val": 7.099600308284453e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.117136292082573e-10,
+            2.7139867353145914e-09,
+            3.431131564934396e-09,
+            3.6637262626870363e-09,
+            3.797692166395574e-09,
+            3.933604526595105e-09,
+            4.099400210415996e-09,
+            4.304633021526353e-09
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.09840173569831855e-12_iter_005.txt",
+          "gmin_val": 7.0984017356983186e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3903816804544552e-09,
+            3.793387999570017e-09,
+            4.73257423280249e-09,
+            5.043153321976872e-09,
+            5.224923129449213e-09,
+            5.41104775483193e-09,
+            5.638524619955069e-09,
+            5.919844066676861e-09
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "21": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 20,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.1700977887182184e-05,
+            4.5257118208551966e-05,
+            6.612419764189458e-05,
+            9.753934881463773e-05,
+            0.00014471456154131632,
+            0.00021553265885689647,
+            0.00032180746233036856,
+            0.0004812291769954936
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.0198437128227368e-05,
+            1.569128763226176e-05,
+            1.0018805428144143e-05,
+            1.0464463952758627e-05,
+            1.4602041459297053e-05,
+            2.1580598963765857e-05,
+            3.218985433306546e-05,
+            4.812893132557308e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.1479508589421183e-12,
+            4.496555105233179e-12,
+            6.5835676554188685e-12,
+            9.731932181383096e-12,
+            1.4453238736829354e-11,
+            2.1538460109594268e-11,
+            3.217141759047868e-11,
+            4.811846094631305e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            379.36888518930374,
+            189.68444389441987,
+            94.84222018540221,
+            47.42111075856317,
+            23.710563493668886,
+            11.85530621750327,
+            5.927712610548194,
+            2.9639911928284612
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "27": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 22,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0011205780877944797,
+            0.000561988675794841,
+            0.0002855954628590622,
+            0.0001527838343247067,
+            9.55970172880117e-05,
+            7.732457202335402e-05,
+            7.500765308048224e-05,
+            7.76165070705997e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4144176496365469e-06,
+            1.608757060392812e-06,
+            1.872822818879356e-06,
+            2.16963485648715e-06,
+            2.485543847246815e-06,
+            2.8153010761988017e-06,
+            3.1567972689026867e-06,
+            3.509233857958814e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3800414575133502e-12,
+            1.597498740059992e-12,
+            1.8540144566484123e-12,
+            2.1461077059494743e-12,
+            2.4621387413112697e-12,
+            2.7945622324932097e-12,
+            3.1265064095117552e-12,
+            3.4855040296330624e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            387691023302900.0,
+            193845511651449.34,
+            96922755825724.03,
+            48461377912863.03,
+            24230688956432.664,
+            12115344478223.805,
+            6057672239162.323,
+            3028836119875.54
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "28": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 24,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.001515124444046649,
+            0.0007672958888569855,
+            0.0004013154270707817,
+            0.00022662756233935645,
+            0.00015284764559678286,
+            0.00013016998599949924,
+            0.00012786665753733878,
+            0.000131729847864609
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.414448468431712e-06,
+            1.6078000755842198e-06,
+            1.8706195008737119e-06,
+            2.1657447998996695e-06,
+            2.479398056791032e-06,
+            2.8062135591777152e-06,
+            3.1439642760976467e-06,
+            3.491730621238986e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3860801361282021e-12,
+            1.6002357728971254e-12,
+            1.8845685412496908e-12,
+            2.1634444731097575e-12,
+            2.4677738312092966e-12,
+            2.7866601080253255e-12,
+            3.1509713672330094e-12,
+            3.4951279860048144e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2550.498884724464,
+            1275.2494424289944,
+            637.6247383514899,
+            318.81238860253086,
+            159.40621357397765,
+            79.70312616777568,
+            39.85158352319844,
+            19.925814844157973
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "29": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 18,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.000994729724456614,
+            0.0005074803747927833,
+            0.0002791764661777244,
+            0.00018476900049441144,
+            0.00015557918209274177,
+            0.0001510896076746882,
+            0.00015399558373359134,
+            0.00015909416011646222
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4143868049484647e-06,
+            1.610058818894377e-06,
+            1.87580717416918e-06,
+            2.1748980587415994e-06,
+            2.493856990354464e-06,
+            2.8275953778870285e-06,
+            3.174165470298202e-06,
+            3.532935271665707e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3689074605826578e-12,
+            1.5843212008268609e-12,
+            1.8385473222938376e-12,
+            2.1296734486512995e-12,
+            2.4719089012418803e-12,
+            2.796565418955264e-12,
+            3.150719595952492e-12,
+            3.4805563234591226e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            929161868308364.6,
+            464580934154182.7,
+            232290467077091.44,
+            116145233538545.75,
+            58072616769272.71,
+            29036308384636.504,
+            14518154192318.174,
+            7259077096159.026
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "30": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 30,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0003311941853552749,
+            0.0001883278416413457,
+            0.00014107735155802578,
+            0.00012998470119845264,
+            0.0001353767095999673,
+            0.00015514269142480078,
+            0.0001950072040190187,
+            0.0002645902489927242
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.773901374899708e-05,
+            9.207820186749213e-06,
+            5.748877946924461e-06,
+            5.681584275183029e-06,
+            7.645154062854968e-06,
+            1.1091513266200791e-05,
+            1.6375273428178108e-05,
+            2.4344883253780874e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0153921386436596e-12,
+            2.6712075908062863e-12,
+            3.6977117168468674e-12,
+            5.230682121563547e-12,
+            7.565527146038738e-12,
+            1.1074223962334692e-11,
+            1.637895465485451e-11,
+            2.4350540126545183e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1462.3930760495618,
+            731.196551420473,
+            365.59810245892453,
+            182.7988624446375,
+            91.39930397739538,
+            45.699675862680714,
+            22.85018444177252,
+            11.426125966731137
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "35": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 29,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.269928787732899e-05,
+            2.8786538551384964e-05,
+            3.6460984648635095e-05,
+            5.155513480004086e-05,
+            7.493208325215667e-05,
+            0.00011023148578882632,
+            0.00016337536678879075,
+            0.00024330299956676086
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0001733522155604e-06,
+            2.6610894247484743e-06,
+            3.689184960265539e-06,
+            5.237202281795265e-06,
+            7.568543936606538e-06,
+            1.1084883010753203e-05,
+            1.6386251955453678e-05,
+            2.436827097436835e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.9976284684473258e-12,
+            2.6720920267717976e-12,
+            3.7091655622107924e-12,
+            5.241483600012923e-12,
+            7.558246607026116e-12,
+            1.1089614069618305e-11,
+            1.6392838302197504e-11,
+            2.437160833902803e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            79142355474592.53,
+            39468118451668.664,
+            19717777262915.7,
+            9850534980350.184,
+            4925410906054.319,
+            2458507374725.277,
+            1228309530784.1116,
+            613209778391.3672
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "37": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 8,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.09083567493447534,
+            0.045418680121907105,
+            0.02270876711267553,
+            0.011355341164202554,
+            0.005683194920090283,
+            0.002857872473890156,
+            0.001471151120064298,
+            0.0008403357218044953
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000352814465938e-06,
+            2.6707527037626845e-06,
+            3.703050356868785e-06,
+            5.246428793535254e-06,
+            7.5575264827305416e-06,
+            1.1027810627698899e-05,
+            1.6241791686397743e-05,
+            2.4070620105367633e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.001655888254879e-12,
+            2.671833448737587e-12,
+            3.704020465661989e-12,
+            5.247317368448859e-12,
+            7.558137478461981e-12,
+            1.102856948688743e-11,
+            1.624268289777231e-11,
+            2.4072115272536845e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.20319885252800665,
+            0.10206649032036054,
+            0.052263511962420225,
+            0.02868770759977142,
+            0.019011493256086986,
+            0.016341877565404235,
+            0.016489545317821038,
+            0.017643391119850423
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "38": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 9,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            5.503487033138877e-05,
+            4.17368137858324e-05,
+            4.6202328071419704e-05,
+            5.967217046622888e-05,
+            8.172533505890293e-05,
+            0.00011583001125807704,
+            0.00016793903969044497,
+            0.0002470173500226878
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000530262422914e-06,
+            2.6701610409553375e-06,
+            3.706747375277088e-06,
+            5.262856108308921e-06,
+            7.601429211538068e-06,
+            1.1123868585329307e-05,
+            1.6430399153974596e-05,
+            2.4417333450209817e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.208211570844435e-12,
+            8.560295253368178e-12,
+            1.0951419172325692e-11,
+            1.2077208761686149e-11,
+            1.3478220096840223e-11,
+            1.5954910944172975e-11,
+            2.027787843960463e-11,
+            2.7438078298661092e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            109.49889392970104,
+            54.74952332985472,
+            27.37453971723535,
+            13.687168430031642,
+            6.843945636350922,
+            3.423408639475494,
+            1.7155676432276314,
+            0.86715308329083
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "39": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 22,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0003406284384335789,
+            0.00017362137290846173,
+            9.89970475264781e-05,
+            8.414290383385363e-05,
+            0.0001075818948156423,
+            0.00015545390728613417,
+            0.00023000751040865662,
+            0.0003426096411983755
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            5.620943645980791e-05,
+            2.8295563246456934e-05,
+            1.4895422272608055e-05,
+            1.0032369690877157e-05,
+            1.1042633517177245e-05,
+            1.5550825737822196e-05,
+            2.2969286111139575e-05,
+            3.423273655293767e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.439234933877617e-12,
+            3.3815933317173922e-12,
+            4.841039778775479e-12,
+            7.0543465763376974e-12,
+            1.0379576433818995e-11,
+            1.5386923307906628e-11,
+            2.2904529976988237e-11,
+            3.41951736614284e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1878791978874037.2,
+            939382827710105.6,
+            469690985383710.9,
+            234843419046492.9,
+            117420216282504.4,
+            58708663362544.69,
+            29353895954291.406,
+            14676392361271.62
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "41": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 27,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0002909367500740401,
+            0.0001531701216006412,
+            9.352082986883162e-05,
+            7.615548779868415e-05,
+            8.562320687721545e-05,
+            0.00011483938289096624,
+            0.00016499218952420103,
+            0.00024333229787005744
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0001805999514975e-06,
+            2.6605933212351425e-06,
+            3.687830250906211e-06,
+            5.234332979871254e-06,
+            7.563032343520527e-06,
+            1.1074832223704868e-05,
+            1.6368508748940175e-05,
+            2.4337642263085242e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.966725383245226e-12,
+            2.6487454415673252e-12,
+            3.698114871588217e-12,
+            5.2303931015827665e-12,
+            7.545768112916623e-12,
+            1.1071861548785095e-11,
+            1.6360901517803123e-11,
+            2.4333975596235956e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            326387929290077.4,
+            163193961690865.84,
+            81596971055295.19,
+            40798440432573.12,
+            20399228902886.31,
+            10199613486360.586,
+            5099810679384.198,
+            2549905019961.3804
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "44": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 6,
+      "history_candidate_count": 3,
+      "history_used_count": 3,
+      "snapshot_count": 24,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000518267990677e-06,
+            2.6702401279005526e-06,
+            3.7014660097752608e-06,
+            5.242783289996607e-06,
+            7.550113046260718e-06,
+            1.1013769184319068e-05,
+            1.6216400805060296e-05,
+            2.4026154488114128e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_1.00000000000000019e-08_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-08,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.00046381760830163627,
+            0.0012727767420700577,
+            0.0016000253431402369,
+            0.001728349108266237,
+            0.0018253579181625509,
+            0.0019374144071761482,
+            0.0020788601931396884,
+            0.002255887350917519
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            564.7286162429928,
+            282.3643081215,
+            141.18215430841096,
+            70.59107747177706,
+            35.29553908120423,
+            17.647769908043085,
+            8.823885348102127,
+            4.4119431025377835
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "49": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 25,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 32,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.00043019803556607853,
+            0.00021992496137782593,
+            0.00012228934993573272,
+            8.260394341449337e-05,
+            7.086367301281016e-05,
+            6.967124751133729e-05,
+            7.177370578151429e-05,
+            7.499665129825319e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4144484809758923e-06,
+            1.6078000696186085e-06,
+            1.8706194912877003e-06,
+            2.165744791471524e-06,
+            2.4793980396441166e-06,
+            2.80621354093466e-06,
+            3.1439642565103113e-06,
+            3.4917306250048594e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3888904853124924e-12,
+            1.6044705504219769e-12,
+            1.8902755447075253e-12,
+            2.168945739695476e-12,
+            2.4681519305230446e-12,
+            2.788829447279209e-12,
+            3.1712910890890008e-12,
+            3.4903380421079194e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 8,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            6.473122873575749e+19,
+            3.241082607297046e+19,
+            1.622164173661058e+19,
+            8.127009447324814e+18,
+            4.05759073878155e+18,
+            2.0338884664730616e+18,
+            1.0165125713038771e+18,
+            5.0688798497220704e+17
+          ]
+        }
+      ],
+      "skipped_history": []
+    }
+  },
+  "snapshot_file_sha256": "18b0a2344cb1aa3870f3aee63ec3681bbefb1593e057e219757e817d45c539ab",
+  "circuit_count": 20,
+  "total_snapshot_count": 728
+}

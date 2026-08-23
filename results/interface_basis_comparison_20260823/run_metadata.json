@@ -1,0 +1,22 @@
+{
+  "experiment": "interface_basis_comparison_20260823",
+  "date": "2026-08-23",
+  "task_count": 280,
+  "target_workers": 200,
+  "actual_workers": 128,
+  "worker_reduction_reason": "每个任务包含独立进程、局部舒尔构造和小规模分解，保留系统调度与文件读写余量",
+  "timeout_per_task_sec": 120,
+  "blas_threads": 1,
+  "gmres_restart": 100,
+  "gmres_max_iters": 500,
+  "rtol": 1e-8,
+  "atol": 1e-10,
+  "initial_guess": "rhsold",
+  "selected_edge_budget": 4096,
+  "interface_solve_mode": "spilu",
+  "snapshot_file": "interface_error_snapshots.npz",
+  "snapshot_columns": 728,
+  "strict_residual_definition": "norm(A @ x - b) / max(norm(b), 1e-30)",
+  "result_summary": "summary.json",
+  "raw_rows": "raw_rows.jsonl"
+}

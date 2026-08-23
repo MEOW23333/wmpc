@@ -195,6 +195,9 @@ def _task_args(args: argparse.Namespace, task: Dict[str, Any]) -> Dict[str, Any]
         'semantic_uncovered_policy': args.semantic_uncovered_policy,
         'semantic_coarse_max_condition': float(args.semantic_coarse_max_condition),
         'semantic_coarse_rank_tol': float(args.semantic_coarse_rank_tol),
+        'interface_basis_snapshot_path': args.interface_basis_snapshot_path,
+        'interface_basis_max_condition': float(args.interface_basis_max_condition),
+        'interface_basis_rank_tol': float(args.interface_basis_rank_tol),
         'sparse_schur_edge_budget': int(task.get('selected_edge_budget') or args.default_selected_edge_budget),
         'local_schur_budget_multiplier': float(args.local_schur_budget_multiplier),
         'sparse_schur_candidate_edge_limit': int(args.sparse_schur_candidate_edge_limit),
@@ -497,6 +500,9 @@ def main() -> None:
     parser.add_argument('--semantic-uncovered-policy', default='row_sum')
     parser.add_argument('--semantic-coarse-max-condition', type=float, default=1.0e12)
     parser.add_argument('--semantic-coarse-rank-tol', type=float, default=1.0e-10)
+    parser.add_argument('--interface-basis-snapshot-path', default='')
+    parser.add_argument('--interface-basis-max-condition', type=float, default=1.0e12)
+    parser.add_argument('--interface-basis-rank-tol', type=float, default=1.0e-10)
     parser.add_argument('--local-schur-budget-multiplier', type=float, default=2.0)
     parser.add_argument('--sparse-schur-candidate-edge-limit', type=int, default=16384)
     parser.add_argument('--sparse-schur-diagonal-shift', type=float, default=1e-8)
