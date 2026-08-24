@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "task_count": 260,
+  "raw_task_count": 260,
+  "strict_success_count": 260,
+  "timeout_count": 0,
+  "main_formula_task_count": 180,
+  "algorithm_criteria": {
+    "strict_success_rate_not_lower": true,
+    "no_fallback_success_rate_at_least_95_percent": true,
+    "median_iteration_reduction_at_least_10_percent": false,
+    "median_total_time_reduction_at_least_10_percent": false,
+    "all_success_residuals_below_1e-8": true,
+    "no_unrecorded_fallback": true,
+    "all_satisfied": false
+  },
+  "memory_criteria": {
+    "0.5": {
+      "strict_success_rate_not_lower": true,
+      "median_iterations_not_higher": false,
+      "interface_storage_saving_at_least_50_percent": false,
+      "accounted_preconditioner_storage_saving_at_least_50_percent": false,
+      "all_satisfied": false
+    },
+    "1.0": {
+      "strict_success_rate_not_lower": true,
+      "median_iterations_not_higher": true,
+      "interface_storage_saving_at_least_50_percent": false,
+      "accounted_preconditioner_storage_saving_at_least_50_percent": false,
+      "all_satisfied": false
+    }
+  },
+  "research_decision": "stop_interface_low_rank_route_and_prioritize_partition_edge_selection_scale_coverage",
+  "memory_claim_scope": "preconditioner_incremental_storage_and_process_peak_rss_reported_separately"
+}

@@ -16,3 +16,8 @@ debug-out*.txt
 *.egg-info/
 .cache/
 results/semantic_coarse_space_pilot_*/
+results/residual_mor_coarse_validation_20260824/logs/
+results/residual_mor_coarse_validation_20260824/smoke/
+results/residual_mor_coarse_validation_20260824/main_formula/
+results/residual_mor_coarse_validation_20260824/storage_substitution/
+results/residual_mor_coarse_validation_20260824/smoke_workpoint_manifest.json

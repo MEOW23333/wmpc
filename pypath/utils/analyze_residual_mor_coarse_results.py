@@ -310,7 +310,10 @@ def combine_outputs(
         "w", newline="", encoding="utf-8"
     ) as handle:
         writer = csv.DictWriter(
-            handle, fieldnames=preferred + remaining, extrasaction="ignore"
+            handle,
+            fieldnames=preferred + remaining,
+            extrasaction="ignore",
+            lineterminator="\n",
         )
         writer.writeheader()
         writer.writerows(normalized_all)

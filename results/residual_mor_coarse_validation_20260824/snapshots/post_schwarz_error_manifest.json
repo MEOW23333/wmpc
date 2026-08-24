@@ -1,0 +1,1328 @@
+{
+  "schema_version": 1,
+  "generator": "generate_interface_error_snapshots.py",
+  "trajectory_dir": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory",
+  "netlist_dir": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/generated_netlists",
+  "workpoint_manifest": "/home/ZhangLexin/PALS/pals_data/runs/positive_gmin_full500_row_sum_screen_20260816/workpoint_manifest.json",
+  "history_limit": 8,
+  "iterations_per_history": 1,
+  "damping": 0.5,
+  "snapshot_kind": "post_schwarz_error",
+  "circuits": {
+    "0": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.99964865956982397e-03_iter_005.txt",
+      "target_gmin_val": 0.009999648659569824,
+      "interface_count": 11,
+      "history_candidate_count": 8,
+      "history_used_count": 8,
+      "snapshot_count": 8,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.99859471234162446e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.009998594712341624,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022890288526704928
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.99438003415553146e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.009994380034155531,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022879416841852594
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.97753907993273632e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.009977539079932736,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022835986235634532
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.91045856248860824e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.009910458562488608,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.022663158334224078
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_9.64661619911199100e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.009646616199111991,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.02198593132643326
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_8.65964323360065256e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.008659643233600653,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.01948855847965399
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_5.62341325190349097e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.005623413251903491,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.012162057029270198
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_0_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.001,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0020365201499718036
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "2": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 18,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            6.70128512764723e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.828493092996986e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.815575243842493e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_2_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            7.963722399687265
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "4": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 26,
+      "history_candidate_count": 8,
+      "history_used_count": 8,
+      "snapshot_count": 8,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_2.37137370566165564e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 2.3713737056616556e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            4.743842864467768e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.05544960087860316e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0554496008786032e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.111182899877164e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.00846797059265945e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0084679705926594e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0667157701179547e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0998853419390983e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_8.79702725486820494e-07_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 8.797027254868205e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            81955727998738.8
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_6.49381631576211470e-07_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 6.493816315762115e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.2935609042076507e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_5.09367521678013632e-07_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 5.093675216780136e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4357022405608354e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_4_time_0.00000000000000000e+00_gmin_5.78782704599540974e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 5.78782704599541e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.1544137081029165e-11
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "8": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 28,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0024604122655739217
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.835178635777612e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.1713642377623495e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_8_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            731342431687.2169
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "11": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 22,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.03904416221718385
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.5425052400922033e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.992759536458377e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_11_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2199796660049757.5
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "14": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 23,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0007041950942140119
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4144279440677109e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4069882681594505e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_14_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            8250168195836911.0
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "18": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 19,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.00020216305642428847
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.9397808859871243e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.98894468373075e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_18_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            204365857168952.66
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "19": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 10,
+      "history_candidate_count": 8,
+      "history_used_count": 8,
+      "snapshot_count": 8,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            6.74566248555426e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0967030250298508e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_1.00000000000000022e-07_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-07,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000302327161424e-07
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.10111988353428680e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 7.101119883534287e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            7.544696726947004e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.10109880861833767e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 7.101098808618338e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.695044135741364e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.10093021154243124e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 7.100930211542431e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            4.741211776477844e-11
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.09960030828445328e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 7.099600308284453e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.117136292082573e-10
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_19_time_0.00000000000000000e+00_gmin_7.09840173569831855e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 7.0984017356983186e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3903816804544552e-09
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "21": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 20,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.1700977887182184e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.0198437128227368e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.1479508589421183e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_21_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            379.36888518930374
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "27": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 22,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0011205780877944797
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4144176496365469e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3800414575133502e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_27_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            387691023302900.0
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "28": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 24,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.001515124444046649
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.414448468431712e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3860801361282021e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_28_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2550.498884724464
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "29": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 18,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.000994729724456614
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4143868049484647e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3689074605826578e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_29_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            929161868308364.6
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "30": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 30,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0003311941853552749
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.773901374899708e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0153921386436596e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_30_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1462.3930760495618
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "35": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 29,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            3.269928787732899e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0001733522155604e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.9976284684473258e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_35_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            79142355474592.53
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "37": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 8,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.09083567493447534
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000352814465938e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.001655888254879e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_37_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.20319885252800665
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "38": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 9,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            5.503487033138877e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000530262422914e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.208211570844435e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_38_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            109.49889392970104
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "39": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 22,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0003406284384335789
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            5.620943645980791e-05
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.439234933877617e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_39_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1878791978874037.2
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "41": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 27,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.0002909367500740401
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0001805999514975e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.966725383245226e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_41_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            326387929290077.4
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "44": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 6,
+      "history_candidate_count": 3,
+      "history_used_count": 3,
+      "snapshot_count": 3,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            2.0000518267990677e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_1.00000000000000019e-08_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-08,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.00046381760830163627
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_44_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            564.7286162429928
+          ]
+        }
+      ],
+      "skipped_history": []
+    },
+    "49": {
+      "target_step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000002e-03_iter_005.txt",
+      "target_gmin_val": 0.001,
+      "interface_count": 25,
+      "history_candidate_count": 4,
+      "history_used_count": 4,
+      "snapshot_count": 4,
+      "source_records": [
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000008e-05_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1e-05,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            0.00043019803556607853
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000017e-06_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-06,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.4144484809758923e-06
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_1.00000000000000018e-12_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 1.0000000000000002e-12,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            1.3888904853124924e-12
+          ]
+        },
+        {
+          "step_path": "/home/ZhangLexin/PALS/pals_data/runs/warmup_migration_79cab9f07_full500_20260710/aggregator/trajectory/circuit_49_time_0.00000000000000000e+00_gmin_0.00000000000000000e+00_iter_005.txt",
+          "snapshot_kind": "post_schwarz_error",
+          "gmin_val": 0.0,
+          "iteration": 5,
+          "direct_solver": "splu",
+          "snapshot_count": 1,
+          "snapshot_columns_normalized": true,
+          "residual_norms": [
+            6.473122873575749e+19
+          ]
+        }
+      ],
+      "skipped_history": []
+    }
+  },
+  "snapshot_file_sha256": "0ce0061d8bd3a426564eda1f3729ed9814b3134d4f869564b34810b908803815",
+  "circuit_count": 20,
+  "total_snapshot_count": 91
+}
