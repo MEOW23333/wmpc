@@ -30,6 +30,7 @@ SPARSE_SEMANTIC_MODES = {
 }
 
 INTERFACE_LOW_RANK_MODE_PREFIX = 'interface_basis_'
+INTERFACE_RESIDUAL_MODE_PREFIX = 'interface_residual_'
 for _basis_name in (
     'constant',
     'graph_laplacian',
@@ -43,6 +44,10 @@ for _basis_name in (
     SPARSE_SEMANTIC_MODES.add(
         f'{INTERFACE_LOW_RANK_MODE_PREFIX}{_basis_name}_sparse'
     )
+    for _rank in (1, 2, 4):
+        SPARSE_SEMANTIC_MODES.add(
+            f'{INTERFACE_RESIDUAL_MODE_PREFIX}{_basis_name}_r{_rank}_sparse'
+        )
 
 
 def _parse_interface_low_rank_mode(mode: str) -> Optional[Tuple[str, int]]:
@@ -68,6 +73,31 @@ def _parse_interface_low_rank_mode(mode: str) -> Optional[Tuple[str, int]]:
     }
     method = aliases.get(name)
     return None if method is None else (method, rank)
+
+
+def _parse_interface_residual_mode(
+    mode: str,
+) -> Optional[Tuple[str, int]]:
+    """Parse residual coarse mode into basis method and rank."""
+    raw = str(mode)
+    if not raw.startswith(INTERFACE_RESIDUAL_MODE_PREFIX):
+        return None
+    body = raw[len(INTERFACE_RESIDUAL_MODE_PREFIX):]
+    if not body.endswith('_sparse'):
+        return None
+    body = body[:-len('_sparse')]
+    parts = body.rsplit('_r', 1)
+    if len(parts) != 2 or not parts[1].isdigit():
+        return None
+    aliases = {
+        'constant': 'constant',
+        'graph_laplacian': 'graph_laplacian',
+        'snapshot_pod': 'snapshot_pod',
+        'schur_low_rank': 'schur_slow_eig',
+    }
+    method = aliases.get(parts[0])
+    return None if method is None else (method, max(int(parts[1]), 1))
+
 
 def semantic_netlist_path(args: argparse.Namespace) -> str:
     raw = str(getattr(args, 'netlist_path', '') or '').strip()
