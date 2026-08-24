@@ -438,6 +438,15 @@ def _evaluate_scipy_sparse(step: Dict[str, Any], mode: str, args: argparse.Names
             'reason': repr(exc),
             'solve_s': float(time.perf_counter() - t0),
         })
+    refresh_metadata = getattr(
+        preconditioner, '_wmpc_metadata_refresh', None
+    )
+    if callable(refresh_metadata):
+        try:
+            pc_info = refresh_metadata()
+            result['preconditioner_info'] = pc_info
+        except Exception as exc:
+            result['preconditioner_metadata_refresh_error'] = repr(exc)
     return result
 
 

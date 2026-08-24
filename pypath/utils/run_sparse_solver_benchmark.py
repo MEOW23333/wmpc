@@ -198,6 +198,8 @@ def _task_args(args: argparse.Namespace, task: Dict[str, Any]) -> Dict[str, Any]
         'interface_basis_snapshot_path': args.interface_basis_snapshot_path,
         'interface_basis_max_condition': float(args.interface_basis_max_condition),
         'interface_basis_rank_tol': float(args.interface_basis_rank_tol),
+        'interface_residual_test_space': getattr(args, 'interface_residual_test_space', 'range_action'),
+        'interface_residual_guard_tolerance': float(getattr(args, 'interface_residual_guard_tolerance', 1.0e-10)),
         'sparse_schur_edge_budget': int(task.get('selected_edge_budget') or args.default_selected_edge_budget),
         'local_schur_budget_multiplier': float(args.local_schur_budget_multiplier),
         'sparse_schur_candidate_edge_limit': int(args.sparse_schur_candidate_edge_limit),
@@ -339,9 +341,21 @@ def _core(row: Dict[str, Any]) -> Dict[str, Any]:
     return core if isinstance(core, dict) else {}
 
 
+def _residual_coarse(row: Dict[str, Any]) -> Dict[str, Any]:
+    pc = row.get('preconditioner_info')
+    pc = pc if isinstance(pc, dict) else {}
+    coarse = pc.get('interface_residual_coarse')
+    return coarse if isinstance(coarse, dict) else {}
+
+
 def _normalize(row: Dict[str, Any]) -> Dict[str, Any]:
     schur = _schur(row)
     core = _core(row)
+    coarse = _residual_coarse(row)
+    corrector = coarse.get('corrector')
+    corrector = corrector if isinstance(corrector, dict) else {}
+    guard = coarse.get('guard')
+    guard = guard if isinstance(guard, dict) else {}
     mode = str(row.get('mode'))
     p_nnz = schur.get('P_nnz', schur.get('P_theta_nnz'))
     fill = schur.get('P_theta_factor_fill_nnz', schur.get('schur_factor_nnz'))
@@ -385,6 +399,30 @@ def _normalize(row: Dict[str, Any]) -> Dict[str, Any]:
         'P_factor_fill_nnz': fill,
         'selected_local_constructed': schur.get('selected_local_constructed'),
         'full_schur_constructed': schur.get('full_schur_constructed', False),
+        'schur_matrix_storage_bytes': schur.get('schur_matrix_storage_bytes'),
+        'schur_factor_storage_bytes': schur.get('schur_factor_storage_bytes'),
+        'interface_retained_bytes': schur.get('interface_retained_bytes'),
+        'base_accounted_preconditioner_retained_bytes': coarse.get(
+            'base_accounted_preconditioner_retained_bytes',
+            schur.get('accounted_preconditioner_retained_bytes'),
+        ),
+        'accounted_preconditioner_retained_bytes': coarse.get(
+            'accounted_preconditioner_retained_bytes',
+            schur.get('accounted_preconditioner_retained_bytes'),
+        ),
+        'coarse_retained_bytes': coarse.get('coarse_retained_bytes', 0),
+        'coarse_requested_rank': coarse.get('requested_rank'),
+        'coarse_actual_rank': coarse.get('actual_rank'),
+        'coarse_enabled': corrector.get('enabled'),
+        'coarse_test_space': corrector.get('test_space'),
+        'coarse_basis_condition': corrector.get('basis_condition'),
+        'coarse_test_basis_condition': corrector.get(
+            'test_basis_condition'
+        ),
+        'coarse_reduced_condition': corrector.get('reduced_condition'),
+        'coarse_guard_accepted': guard.get('accepted'),
+        'coarse_guard_ratio': guard.get('candidate_to_base_ratio'),
+        'coarse_fallback_reason': corrector.get('fallback_reason'),
         'resolved_netlist_path': row.get('resolved_netlist_path'),
     }
 
@@ -402,6 +440,9 @@ def _write_csv(path: Path, rows: Sequence[Dict[str, Any]]) -> None:
         'gmres_iterations', 'gmres_info', 'true_rel_residual', 'chosen_success',
         'setup_time', 'solve_time', 'total_wall_time', 'peak_rss_kb', 'status', 'timeout_hit',
         'P_nnz', 'P_factor_fill_nnz', 'failure_stage', 'failure_reason',
+        'interface_retained_bytes', 'coarse_retained_bytes',
+        'accounted_preconditioner_retained_bytes', 'coarse_actual_rank',
+        'coarse_enabled', 'coarse_guard_accepted', 'coarse_guard_ratio',
     ]
     with path.open('w', newline='', encoding='utf-8') as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction='ignore')
@@ -426,6 +467,19 @@ def _summary(rows: Sequence[Dict[str, Any]], args: argparse.Namespace) -> Dict[s
             'avg_true_rel_residual': _mean(r.get('true_rel_residual') for r in group if r.get('true_rel_residual') is not None),
             'avg_total_wall_time': _mean(r.get('total_wall_time') for r in group),
             'avg_peak_rss_kb': _mean(r.get('peak_rss_kb') for r in group),
+            'coarse_enabled_count': sum(
+                1 for r in group if r.get('coarse_enabled') is True
+            ),
+            'coarse_fallback_count': sum(
+                1 for r in group if r.get('coarse_enabled') is False
+            ),
+            'avg_interface_retained_bytes': _mean(
+                r.get('interface_retained_bytes') for r in group
+            ),
+            'avg_accounted_preconditioner_retained_bytes': _mean(
+                r.get('accounted_preconditioner_retained_bytes')
+                for r in group
+            ),
         })
     return {
         'metadata': {
@@ -503,6 +557,8 @@ def main() -> None:
     parser.add_argument('--interface-basis-snapshot-path', default='')
     parser.add_argument('--interface-basis-max-condition', type=float, default=1.0e12)
     parser.add_argument('--interface-basis-rank-tol', type=float, default=1.0e-10)
+    parser.add_argument('--interface-residual-test-space', choices=['range_action', 'galerkin'], default='range_action')
+    parser.add_argument('--interface-residual-guard-tolerance', type=float, default=1.0e-10)
     parser.add_argument('--local-schur-budget-multiplier', type=float, default=2.0)
     parser.add_argument('--sparse-schur-candidate-edge-limit', type=int, default=16384)
     parser.add_argument('--sparse-schur-diagonal-shift', type=float, default=1e-8)

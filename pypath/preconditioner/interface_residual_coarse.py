@@ -205,6 +205,7 @@ class ResidualCoarseCorrector:
             return np.asarray(output, dtype=np.complex128)
         except Exception as exc:
             self.runtime_fallback_count += 1
+            self.enabled = False
             self.fallback_reason = f"runtime:{exc!r}"
             return self._base(vector)
 
@@ -258,6 +259,7 @@ class InterfaceResidualCoarsePreconditioner:
         self.guard_tolerance = float(guard_tolerance)
         self.interface_rows = np.asarray(base.interface_rows, dtype=np.int64)
         self.interface_count = int(self.interface_rows.size)
+        self.basis_target_provided = basis_target is not None
         p_dense = np.asarray(base.schur_matrix.toarray())
         target = p_dense if basis_target is None else basis_target
         graph_weights = np.abs(p_dense)
@@ -286,6 +288,8 @@ class InterfaceResidualCoarsePreconditioner:
             max_condition=float(max_condition),
             rank_tol=float(rank_tol),
         )
+        # Retain one accepted basis copy after orthonormalization.
+        self.basis = self.corrector.basis
         self.guard_info: Dict[str, Any] = {
             "configured": guard_vector is not None,
             "accepted": None,
@@ -352,6 +356,14 @@ class InterfaceResidualCoarsePreconditioner:
         if guard_vector is None:
             self.guard_info["reason"] = "guard_vector_not_configured"
             return
+        if not self.corrector.enabled:
+            self.guard_info.update(
+                {
+                    "accepted": False,
+                    "reason": "corrector_disabled_before_guard",
+                }
+            )
+            return
         try:
             vector = np.asarray(
                 guard_vector, dtype=np.complex128
@@ -378,3 +390,87 @@ class InterfaceResidualCoarsePreconditioner:
                 1.0 + self.guard_tolerance
             ) * base_norm
             self.guard_info.update(
+                {
+                    "accepted": bool(accepted),
+                    "base_residual_norm": base_norm,
+                    "candidate_residual_norm": candidate_norm,
+                    "candidate_to_base_ratio": ratio,
+                    "reason": None if accepted else "candidate_residual_worse",
+                }
+            )
+            if not accepted:
+                self.corrector.disable(
+                    "guard:candidate_residual_worse:"
+                    f"ratio={ratio:.16e}"
+                )
+        except Exception as exc:
+            self.guard_info.update(
+                {
+                    "accepted": False,
+                    "reason": f"guard_exception:{exc!r}",
+                }
+            )
+            self.corrector.disable(f"guard_exception:{exc!r}")
+
+    def apply(self, vec: np.ndarray) -> np.ndarray:
+        vector = np.asarray(vec, dtype=np.complex128).reshape(-1)
+        if vector.shape[0] != int(self.base.matrix.shape[0]):
+            raise ValueError("full_rhs_dimension_mismatch")
+        if not self.corrector.enabled:
+            return np.asarray(self.base.apply(vector), dtype=np.complex128)
+        return self._apply_impl(vector)
+
+    def metadata(self) -> Dict[str, Any]:
+        corrector_info = self.corrector.metadata()
+        base_interface_bytes = int(
+            getattr(self.base, "interface_retained_bytes", 0)
+        )
+        base_preconditioner_bytes = int(
+            getattr(
+                self.base,
+                "accounted_preconditioner_retained_bytes",
+                base_interface_bytes,
+            )
+        )
+        coarse_bytes = int(corrector_info["retained_coarse_bytes"])
+        return {
+            "preconditioner_mode": "interface_residual_coarse_" + self.method,
+            "formula": "P^-1 + V(W^H S V)^-1 W^H(I-S P^-1)",
+            "basis_method": self.method,
+            "basis": dict(self.basis_info),
+            "corrector": corrector_info,
+            "guard": dict(self.guard_info),
+            "basis_target_source": (
+                "provided_interface_schur"
+                if self.basis_target_provided
+                else "base_sparse_schur"
+            ),
+            "interface_rows": int(self.interface_count),
+            "requested_rank": int(self.requested_rank),
+            "actual_rank": int(
+                self.corrector.basis.shape[1]
+                if self.corrector.basis.ndim == 2
+                else 0
+            ),
+            "base_interface_retained_bytes": base_interface_bytes,
+            "coarse_retained_bytes": coarse_bytes,
+            "interface_plus_coarse_retained_bytes": int(
+                base_interface_bytes + coarse_bytes
+            ),
+            "base_accounted_preconditioner_retained_bytes": (
+                base_preconditioner_bytes
+            ),
+            "accounted_preconditioner_retained_bytes": int(
+                base_preconditioner_bytes + coarse_bytes
+            ),
+            "memory_scope": (
+                "核心块因子、未覆盖缩放、接口矩阵及因子、"
+                "V、SV、W和降阶小矩阵；不含全阶A和Python对象开销"
+            ),
+        }
+
+
+__all__ = [
+    "InterfaceResidualCoarsePreconditioner",
+    "ResidualCoarseCorrector",
+]

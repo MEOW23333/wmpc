@@ -129,6 +129,7 @@ def _one_history_snapshots(
     damping: float,
     factor_drop_tol: float,
     factor_fill_factor: float,
+    snapshot_kind: str = "iterative_error",
 ) -> Tuple[np.ndarray, Dict[str, Any]]:
     matrix, payload = _matrix_and_payload(step)
     rhs = np.asarray(payload.get("rhsnew", []), dtype=np.float64)
@@ -145,25 +146,35 @@ def _one_history_snapshots(
     )
     if not np.array_equal(interface_rows, expected_interface_rows):
         raise ValueError("history_interface_rows_not_aligned")
-    try:
-        reference = np.asarray(splu(matrix.tocsc()).solve(rhs), dtype=np.float64)
-        direct_mode = "splu"
-    except Exception:
-        reference = np.asarray(np.linalg.lstsq(matrix.toarray(), rhs, rcond=None)[0])
-        direct_mode = "dense_lstsq"
     x = (
         rhsold.copy()
         if rhsold.shape[0] == rhs.shape[0]
         else np.zeros_like(rhs, dtype=np.float64)
     )
+    initial_residual = rhs - matrix.dot(x)
+    direct_rhs = (
+        initial_residual
+        if snapshot_kind == "post_schwarz_error"
+        else rhs
+    )
+    try:
+        reference = np.asarray(
+            splu(matrix.tocsc()).solve(direct_rhs),
+            dtype=np.float64,
+        )
+        direct_mode = "splu"
+    except Exception as exc:
+        if snapshot_kind == "post_schwarz_error":
+            raise RuntimeError(
+                "post_schwarz_error_requires_sparse_direct_solve"
+            ) from exc
+        reference = np.asarray(
+            np.linalg.lstsq(matrix.toarray(), rhs, rcond=None)[0]
+        )
+        direct_mode = "dense_lstsq"
     columns: List[np.ndarray] = []
     residual_norms: List[float] = []
-    for _ in range(max(int(iterations), 1)):
-        error = reference[interface_rows] - x[interface_rows]
-        if np.all(np.isfinite(error)) and float(np.linalg.norm(error)) > 0.0:
-            columns.append(np.asarray(error, dtype=np.float64))
-        residual = rhs - matrix.dot(x)
-        residual_norms.append(float(np.linalg.norm(residual)))
+    def real_correction(residual: np.ndarray) -> np.ndarray:
         correction = np.asarray(preconditioner.apply(residual))
         if np.iscomplexobj(correction):
             imag = float(np.max(np.abs(correction.imag))) if correction.size else 0.0
@@ -174,9 +185,25 @@ def _one_history_snapshots(
         correction = np.asarray(correction, dtype=np.float64)
         if not np.all(np.isfinite(correction)):
             raise ValueError("history_preconditioner_nonfinite_output")
-        x = x + float(damping) * correction
-        if not np.all(np.isfinite(x)) or float(np.linalg.norm(x)) > 1.0e100:
-            break
+        return correction
+    if snapshot_kind == "post_schwarz_error":
+        residual_norms.append(float(np.linalg.norm(initial_residual)))
+        base_correction = real_correction(initial_residual)
+        error = reference[interface_rows] - base_correction[interface_rows]
+        if np.all(np.isfinite(error)) and float(np.linalg.norm(error)) > 0.0:
+            columns.append(np.asarray(error, dtype=np.float64))
+    elif snapshot_kind == "iterative_error":
+        for _ in range(max(int(iterations), 1)):
+            error = reference[interface_rows] - x[interface_rows]
+            if np.all(np.isfinite(error)) and float(np.linalg.norm(error)) > 0.0:
+                columns.append(np.asarray(error, dtype=np.float64))
+            residual = rhs - matrix.dot(x)
+            residual_norms.append(float(np.linalg.norm(residual)))
+            x = x + float(damping) * real_correction(residual)
+            if not np.all(np.isfinite(x)) or float(np.linalg.norm(x)) > 1.0e100:
+                break
+    else:
+        raise ValueError(f"unsupported_snapshot_kind:{snapshot_kind}")
     snapshots = (
         np.column_stack(columns)
         if columns
@@ -188,6 +215,7 @@ def _one_history_snapshots(
         snapshots = snapshots[:, keep] / norms[keep]
     return snapshots, {
         "step_path": str(step["step_path"]),
+        "snapshot_kind": snapshot_kind,
         "gmin_val": float(step.get("gmin_val", 0.0)),
         "iteration": int(step.get("iteration", -1)),
         "direct_solver": direct_mode,
@@ -251,6 +279,11 @@ def main() -> None:
     parser.add_argument("--edge-budget", type=int, default=4096)
     parser.add_argument("--factor-drop-tol", type=float, default=1.0e-4)
     parser.add_argument("--factor-fill-factor", type=float, default=10.0)
+    parser.add_argument(
+        "--snapshot-kind",
+        choices=["iterative_error", "post_schwarz_error"],
+        default="iterative_error",
+    )
     args = parser.parse_args()
 
     trajectory_dir = str(Path(args.trajectory_dir).resolve())
@@ -267,6 +300,7 @@ def main() -> None:
         "history_limit": int(args.history_limit),
         "iterations_per_history": int(args.iterations_per_history),
         "damping": float(args.damping),
+        "snapshot_kind": str(args.snapshot_kind),
         "circuits": {},
     }
     for workpoint in manifest_payload["workpoints"]:
@@ -305,6 +339,7 @@ def main() -> None:
                     damping=float(args.damping),
                     factor_drop_tol=float(args.factor_drop_tol),
                     factor_fill_factor=float(args.factor_fill_factor),
+                    snapshot_kind=str(args.snapshot_kind),
                 )
                 if snapshot.shape[1]:
                     columns.extend(

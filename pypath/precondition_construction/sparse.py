@@ -293,6 +293,28 @@ def _factor_dense_block(block: np.ndarray) -> Tuple[np.ndarray, str]:
         return np.linalg.pinv(block), 'dense_pinv'
 
 
+def _sparse_storage_bytes(value: sp.spmatrix) -> int:
+    matrix = value.tocsc(copy=False)
+    return int(
+        matrix.data.nbytes
+        + matrix.indices.nbytes
+        + matrix.indptr.nbytes
+    )
+
+
+def _factor_storage_bytes(value: Any) -> int:
+    if value is None:
+        return 0
+    if isinstance(value, np.ndarray):
+        return int(value.nbytes)
+    total = 0
+    for name in ('L', 'U'):
+        factor = getattr(value, name, None)
+        if sp.issparse(factor):
+            total += _sparse_storage_bytes(factor)
+    return int(total)
+
+
 class SparseSemanticBlockJacobi:
     def __init__(self, matrix: sp.spmatrix, blocks: List[np.ndarray], uncovered_policy: str = 'row_sum'):
         self.matrix = matrix.tocsr()
@@ -439,6 +461,26 @@ class SparseLocalSchurPreconditioner:
             diag = self.schur_matrix.diagonal().astype(np.complex128) if self.interface_count else np.zeros(0, dtype=np.complex128)
             self.schur_factor = np.where(np.abs(diag) > self.eps, 1.0 / diag, 0.0 + 0.0j)
         self.factorization_time = float(time.perf_counter() - start_time)
+        self.schur_matrix_storage_bytes = _sparse_storage_bytes(
+            self.schur_matrix
+        )
+        self.schur_factor_storage_bytes = _factor_storage_bytes(
+            self.schur_factor
+        )
+        self.interface_retained_bytes = int(
+            self.schur_matrix_storage_bytes + self.schur_factor_storage_bytes
+        )
+        self.core_factor_storage_bytes = int(
+            sum(int(factor.nbytes) for factor in self.core.factor_solvers)
+        )
+        self.uncovered_scale_storage_bytes = int(
+            self.core.uncovered_scales.nbytes
+        )
+        self.accounted_preconditioner_retained_bytes = int(
+            self.core_factor_storage_bytes
+            + self.uncovered_scale_storage_bytes
+            + self.interface_retained_bytes
+        )
         self.apply_count = 0
         self.apply_time_total = 0.0
 
@@ -754,6 +796,40 @@ class SparseLocalSchurPreconditioner:
             return np.asarray(y, dtype=np.complex128)
         return factor.solve(rhs)
 
+    def apply_interface_schur(self, value: np.ndarray) -> np.ndarray:
+        """Apply the local-block Schur operator without a global dense matrix."""
+        raw = np.asarray(value, dtype=np.complex128)
+        vector_input = raw.ndim == 1
+        if vector_input:
+            raw = raw.reshape(-1, 1)
+        if raw.ndim != 2 or raw.shape[0] != self.interface_count:
+            raise ValueError('interface_schur_input_dimension_mismatch')
+        if not np.all(np.isfinite(raw)):
+            raise ValueError('interface_schur_input_nonfinite')
+        output = np.asarray(self.abb.dot(raw), dtype=np.complex128)
+        for rows, core_factor in zip(
+            self.core.blocks, self.core.factor_solvers
+        ):
+            a_core_interface = self.matrix[
+                rows, :
+            ][:, self.interface_rows]
+            local_rhs = np.asarray(
+                a_core_interface.dot(raw), dtype=np.complex128
+            )
+            if not np.any(np.abs(local_rhs) > self.eps):
+                continue
+            local_solution = core_factor.dot(local_rhs)
+            a_interface_core = self.matrix[
+                self.interface_rows, :
+            ][:, rows]
+            output = output - np.asarray(
+                a_interface_core.dot(local_solution),
+                dtype=np.complex128,
+            )
+        if not np.all(np.isfinite(output)):
+            raise ValueError('interface_schur_output_nonfinite')
+        return output[:, 0] if vector_input else output
+
     def _apply_with_factor(self, vec: np.ndarray, factor: Any, factor_mode: str, schur_matrix: sp.csc_matrix) -> np.ndarray:
         vec = np.asarray(vec, dtype=np.complex128)
         out = np.zeros_like(vec)
@@ -911,6 +987,26 @@ class SparseLocalSchurPreconditioner:
             'max_exact_entries': int(self.max_exact_entries),
             'budget_constraint_violations': budget_constraint_violations,
             'diagonal_shift': float(self.diagonal_shift),
+            'schur_matrix_storage_bytes': int(
+                self.schur_matrix_storage_bytes
+            ),
+            'schur_factor_storage_bytes': int(
+                self.schur_factor_storage_bytes
+            ),
+            'interface_retained_bytes': int(self.interface_retained_bytes),
+            'core_factor_storage_bytes': int(
+                self.core_factor_storage_bytes
+            ),
+            'uncovered_scale_storage_bytes': int(
+                self.uncovered_scale_storage_bytes
+            ),
+            'accounted_preconditioner_retained_bytes': int(
+                self.accounted_preconditioner_retained_bytes
+            ),
+            'memory_scope': (
+                '核心块因子、未覆盖缩放、接口矩阵及因子；'
+                '不含全阶A和Python对象开销'
+            ),
             'memory_estimate': int(self.matrix.data.nbytes + self.matrix.indices.nbytes + self.matrix.indptr.nbytes + self.schur_matrix.data.nbytes + self.schur_matrix.indices.nbytes + self.schur_matrix.indptr.nbytes),
             'core': self.core.metadata(),
         }
@@ -1065,6 +1161,98 @@ def build_sparse_semantic_preconditioner(
     )
     info['boundary_debug'] = boundary_debug
     info['schur'] = schur.metadata()
+    residual_spec = _parse_interface_residual_mode(mode)
+    if residual_spec is not None:
+        basis_method, basis_rank = residual_spec
+        from pypath.preconditioner.interface_residual_coarse import (
+            InterfaceResidualCoarsePreconditioner,
+        )
+
+        snapshots = None
+        snapshot_path = str(
+            getattr(args, 'interface_basis_snapshot_path', '') or ''
+        ).strip()
+        if basis_method == 'snapshot_pod' and snapshot_path:
+            try:
+                with np.load(snapshot_path, allow_pickle=False) as payload_npz:
+                    key = f"circuit_{int(step.get('circuit_id', 0))}"
+                    if key not in payload_npz.files:
+                        raise KeyError(key)
+                    snapshots = np.asarray(
+                        payload_npz[key], dtype=np.float64
+                    )
+            except Exception as exc:
+                info['snapshot_load_error'] = repr(exc)
+        elif basis_method == 'snapshot_pod':
+            info['snapshot_load_error'] = 'snapshot_path_not_configured'
+
+        basis_target = None
+        basis_target_error = None
+        if basis_method == 'schur_slow_eig':
+            try:
+                identity = np.eye(
+                    schur.interface_count, dtype=np.complex128
+                )
+                basis_target = schur.apply_interface_schur(identity)
+            except Exception as exc:
+                basis_target_error = repr(exc)
+
+        residual_coarse = InterfaceResidualCoarsePreconditioner(
+            base=schur,
+            method=basis_method,
+            requested_rank=basis_rank,
+            snapshots=snapshots,
+            basis_target=basis_target,
+            test_space=str(
+                getattr(
+                    args,
+                    'interface_residual_test_space',
+                    'range_action',
+                )
+            ),
+            guard_vector=initial_residual,
+            guard_tolerance=float(
+                getattr(
+                    args,
+                    'interface_residual_guard_tolerance',
+                    1.0e-10,
+                )
+            ),
+            max_condition=float(
+                getattr(args, 'interface_basis_max_condition', 1.0e12)
+            ),
+            rank_tol=float(
+                getattr(args, 'interface_basis_rank_tol', 1.0e-10)
+            ),
+        )
+        residual_info = residual_coarse.metadata()
+        residual_info['basis_target_error'] = basis_target_error
+        info['interface_residual_coarse'] = residual_info
+        info['fallback_reason'] = (
+            residual_info.get('corrector', {}).get('fallback_reason')
+            if not bool(
+                residual_info.get('corrector', {}).get('enabled')
+            )
+            else None
+        )
+        operator = LinearOperator(
+            matrix.shape,
+            matvec=residual_coarse.apply,
+            dtype=matrix.dtype,
+        )
+        def refresh_residual_metadata() -> Dict[str, Any]:
+            refreshed = residual_coarse.metadata()
+            refreshed['basis_target_error'] = basis_target_error
+            info['interface_residual_coarse'] = refreshed
+            info['schur'] = schur.metadata()
+            info['fallback_reason'] = (
+                refreshed.get('corrector', {}).get('fallback_reason')
+                if not bool(refreshed.get('corrector', {}).get('enabled'))
+                else None
+            )
+            return info
+        operator._wmpc_metadata_refresh = refresh_residual_metadata
+        return operator, info
     low_rank_spec = _parse_interface_low_rank_mode(mode)
     if low_rank_spec is not None:
         basis_method, basis_rank = low_rank_spec
@@ -1157,9 +1345,11 @@ def build_preconditioner(matrix: sp.spmatrix, mode: str) -> tuple[Optional[Linea
 __all__ = [
     'SPARSE_SEMANTIC_MODES',
     'INTERFACE_LOW_RANK_MODE_PREFIX',
+    'INTERFACE_RESIDUAL_MODE_PREFIX',
     'SparseSemanticBlockJacobi',
     'SparseLocalSchurPreconditioner',
     '_parse_interface_low_rank_mode',
+    '_parse_interface_residual_mode',
     'build_preconditioner',
     'build_sparse_semantic_preconditioner',
     'semantic_netlist_path',
