@@ -1,0 +1,25 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o /home/ZhangLexin/PALS/wmpc/results/bsimcmg_version_gate_20260903/direct_v107.log /home/ZhangLexin/PALS/wmpc/results/bsimcmg_version_gate_20260903/direct_v107.sp
+
+
+Note: No compatibility mode selected!
+
+max line length 1517, max subst. per line 0, number of lines 32
+
+Circuit: * version 107 direct osdi probe
+
+Warning: Model issue on line 8 :
+  .model nmos1 bsimcmg_va bulkmod=1 capmod=0 coremod=0 cgeomod=0 type=1 ge ...
+Unknown model type bsimcmg_va - ignored
+
+Warning: Model issue on line 8 :
+  .model pmos1 bsimcmg_va bulkmod=1 capmod=0 coremod=0 cgeomod=0 type=-1 g ...
+Unknown model type bsimcmg_va - ignored
+
+Error on line 6 or its substitute:
+  np1 vo vi supply 0 pmos1 l=30n hfin=30n tfin=15n nfin=10
+Unable to find definition of model pmos1
+    Simulation interrupted due to error!
+

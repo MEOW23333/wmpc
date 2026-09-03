@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-03",
+  "project": "wmpc",
+  "build": {
+    "status": "blocked",
+    "configure_with_gxx_shim": "passed",
+    "compile": "not_run",
+    "reason": "system gcc and make links are unavailable; g++ exists but make is missing; conda toolchain install failed due package cache temporary-file error"
+  },
+  "ngspice_reference": {
+    "path": "/home/ZhangLexin/PALS/release/src/ngspice",
+    "sha256": "16ab153d48b3dd8d93185be8c694de7e82118a42851b62dbd2cc775eaeee8b3d"
+  },
+  "models": [
+    {
+      "library": "ASAP5",
+      "bsimcmg": "107",
+      "osdi_sha256": "2162068c05648307d82fd5f4b0f10e85b400d9a6598cbc3ef9821c19b3c42255",
+      "status": "failed_interface",
+      "reason": "unknown parameter tfin / model-interface mismatch"
+    },
+    {
+      "library": "FreePDK3",
+      "bsimcmg": "108",
+      "osdi_sha256": "81d1a6b54258957a20b9fc8a0a1112cdbd311b926f55f47db6bb5cb8158638d4",
+      "status": "failed_interface",
+      "reason": "unknown parameter tfin / model-interface mismatch"
+    }
+  ],
+  "strict_success": 0,
+  "task_count": 3,
+  "physical_correctness": "not_proven"
+}
