@@ -1,0 +1,13 @@
+* PKP3 .hdl probe
+.hdl /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va
+.include /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/MODELCARD/TT_modelcard.pm
+Vd d 0 0.35
+Vg g 0 0.35
+Vs s 0 0
+Vb b 0 0
+N1 d g s b nmos_lvt L=16n W=35n NF=1
+.control
+op
+print v(d)
+.endc
+.end

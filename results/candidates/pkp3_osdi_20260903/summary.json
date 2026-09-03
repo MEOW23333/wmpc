@@ -1,0 +1,86 @@
+{
+  "date": "2026-09-03",
+  "candidate": "PKP3",
+  "source_url": "https://github.com/PHIMO-Group/PKP3.git",
+  "source_commit": "9c38ccf3e2f5682ec7e859bcff9e41bde1e08996",
+  "technology": "predictive 3nm nanosheet GAAFET",
+  "model_family": "PHIMO-Fusion derived from BSIM-CMG 111.2.1",
+  "license": "BSD-3-Clause",
+  "openvaf_23_5": {
+    "status": "failed",
+    "reason": "parser rejects instance_parameter_list and constant-expression references; after minimal syntax adaptation compiler crashes in dead-code pass"
+  },
+  "openvaf_reloaded_0_4": {
+    "status": "blocked",
+    "reason": "binary requires GLIBC >=2.27 while server provides GLIBC 2.17"
+  },
+  "ngspice_hdl": {
+    "status": "failed",
+    "reason": "ngspice reports .hdl unimplemented"
+  },
+  "strict_success": 0,
+  "task_count": 3,
+  "physical_correctness": "not_proven",
+  "artifacts": [
+    {
+      "name": "fusion_ic_nmos_lvt_adapted.va",
+      "bytes": 112097,
+      "sha256": "ef6871d18b9b58cc0daa05248d156667d30922e186b09373a29bbc08455b3261"
+    },
+    {
+      "name": "fusion_ic_pmos_lvt_adapted.va",
+      "bytes": 112918,
+      "sha256": "45c5a347e97e03a5b9d0dc0c576e91881684670e3d5df1070495fa832531b81c"
+    },
+    {
+      "name": "nmos_lvt.compile.log",
+      "bytes": 2712,
+      "sha256": "bc394928ce8a6d4d7358cca30d09fe92efe44bc6298e142ee8ca746f33e5e853"
+    },
+    {
+      "name": "nmos_lvt_adapted.compile.log",
+      "bytes": 354,
+      "sha256": "3394ed71f4eade963e055ba7cc5b65c3e0c27165cc4810f63f712403aa2ebfe3"
+    },
+    {
+      "name": "nmos_lvt_o0.compile.log",
+      "bytes": 354,
+      "sha256": "94e37ca6e0c5695005d88ded56680ef161388e74638d09b8ad6a6d15b1316232"
+    },
+    {
+      "name": "nmos_lvt_reloaded.compile.log",
+      "bytes": 2955,
+      "sha256": "fb59bc02bf0ba2f069889ea71f956f853ba1beb615208e19398e70ccd53cc23b"
+    },
+    {
+      "name": "pkp3_hdl_probe.cir",
+      "bytes": 352,
+      "sha256": "98093143007269ab39bdd5682369449673b9bcb093c59988bf48580858fc8e40"
+    },
+    {
+      "name": "pkp3_hdl_probe.log",
+      "bytes": 613,
+      "sha256": "2079c5e880a394005e39aa4c5182696e34ef9079a6a879bc3e8799aa613cfea3"
+    },
+    {
+      "name": "pmos_lvt.compile.log",
+      "bytes": 2712,
+      "sha256": "c5009069982efa0a344587108af4ec04b9124bb2eb54a084830552544f49e5b4"
+    },
+    {
+      "name": "pmos_lvt_adapted.compile.log",
+      "bytes": 354,
+      "sha256": "3394ed71f4eade963e055ba7cc5b65c3e0c27165cc4810f63f712403aa2ebfe3"
+    },
+    {
+      "name": "pmos_lvt_o0.compile.log",
+      "bytes": 354,
+      "sha256": "94e37ca6e0c5695005d88ded56680ef161388e74638d09b8ad6a6d15b1316232"
+    },
+    {
+      "name": "pmos_lvt_reloaded.compile.log",
+      "bytes": 2955,
+      "sha256": "fb59bc02bf0ba2f069889ea71f956f853ba1beb615208e19398e70ccd53cc23b"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/pkp3_osdi_20260903/pkp3_hdl_probe.log results/candidates/pkp3_osdi_20260903/pkp3_hdl_probe.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 116, max subst. per line 0, number of lines 32
+
+Circuit: * pkp3 .hdl probe
+
+Error on line 2 or its substitute:
+  .hdl /home/zhanglexin/pals/wmpc/results/candidates/pkp3_repo/models/phimo/verilog-a/phimo_nmos/fusion_ic_nmos_lvt.va
+ unimplemented dot command '.hdl'
+    Simulation interrupted due to error!
+

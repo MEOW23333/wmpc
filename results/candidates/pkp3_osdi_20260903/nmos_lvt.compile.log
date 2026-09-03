@@ -1,0 +1,61 @@
+error: unexpected token '{'; expected '(', ''{', system function identifier, identifier, literal, 
+'~', '!', '+' or '-'
+   --> /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va:28:30
+   |
+28 | (* instance_parameter_list = {L, W, NF} *)
+   |                              ^ unexpected_token
+
+error: constant expressions must not contain variable references
+    --> /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va:479:21
+    |
+478 |   real MEL = 9.11e-31;
+    |        -------------- help: 'MEL' was declard here
+479 |   real mx = 0.916 * MEL;
+    |                     ^^^ not allowed here
+
+error: constant expressions must not contain variable references
+    --> /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va:480:26
+    |
+478 |   real MEL = 9.11e-31;
+    |        -------------- help: 'MEL' was declard here
+479 |   real mx = 0.916 * MEL;
+480 |   real mxprime = 0.190 * MEL;
+    |                          ^^^ not allowed here
+
+error: constant expressions must not contain variable references
+    --> /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va:481:21
+    |
+478 |   real MEL = 9.11e-31;
+    |        -------------- help: 'MEL' was declard here
+    .
+481 |   real md = 0.190 * MEL;
+    |                     ^^^ not allowed here
+
+error: constant expressions must not contain variable references
+    --> /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va:482:26
+    |
+478 |   real MEL = 9.11e-31;
+    |        -------------- help: 'MEL' was declard here
+    .
+482 |   real mdprime = 0.417 * MEL;
+    |                          ^^^ not allowed here
+
+error: constant expressions must not contain variable references
+    --> /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va:595:19
+    |
+594 |   real EPSRSUB = 11.9;
+    |        -------------- help: 'EPSRSUB' was declard here
+595 |   real epsratio = EPSRSUB / EPSROX;
+    |                   ^^^^^^^ not allowed here
+
+error: constant expressions must not contain variable references
+    --> /home/ZhangLexin/PALS/wmpc/results/candidates/pkp3_repo/models/PHIMO/VERILOG-A/PHIMO_NMOS/fusion_ic_nmos_lvt.va:595:29
+    |
+591 |   real EPSROX = 3.9;
+    |        ------------ help: 'EPSROX' was declard here
+    .
+595 |   real epsratio = EPSRSUB / EPSROX;
+    |                             ^^^^^^ not allowed here
+
+error: could not compile `fusion_ic_nmos_lvt.va` due to 7 previous errors
+
