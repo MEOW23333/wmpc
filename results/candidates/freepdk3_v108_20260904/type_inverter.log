@@ -1,0 +1,49 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/freepdk3_v108_20260904/type_inverter.log results/candidates/freepdk3_v108_20260904/type_inverter.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1234, max subst. per line 0, number of lines 50
+
+Circuit: * freepdk3 反相器直流和瞬态闸门
+
+Warning: Model issue on line 16 :
+  .model nfet bsimcmg l=1.5e-08 type=1 easub=4.0727 ni0sub=1.1055e+16 bg0s ...
+unrecognized parameter (prwg) - ignored
+
+Warning: Model issue on line 143 :
+  .model pfet bsimcmg l=1.5e-08 type=-1 easub=4.1312 ni0sub=4.3638e+16 bg0 ...
+unrecognized parameter (prwg) - ignored
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Parameter TYPE is out of bounds!
+doAnalyses: 1 errors occurred during initialization detected in routine "OSDI setup_model"
+
+op simulation(s) aborted
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Parameter TYPE is out of bounds!
+doAnalyses: 1 errors occurred during initialization detected in routine "OSDI setup_model"
+
+dc simulation(s) aborted
+Warning from checkvalid: vector in is not available or has zero length.
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Parameter TYPE is out of bounds!
+doAnalyses: 1 errors occurred during initialization detected in routine "OSDI setup_model"
+
+tran simulation(s) aborted
+Error: measure limited to tran, dc, sp, or ac analysis
+ meas tran vout_input_low find v(out) at=0.5p failed!
+
+Error: measure limited to tran, dc, sp, or ac analysis
+ meas tran vout_input_high find v(out) at=3p failed!
+
+Error: measure limited to tran, dc, sp, or ac analysis
+ meas tran vout_after_fall find v(out) at=8p failed!
+
+ngspice-44+ done

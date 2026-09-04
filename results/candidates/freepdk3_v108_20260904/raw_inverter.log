@@ -1,0 +1,30 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/freepdk3_v108_20260904/raw_inverter.log results/candidates/freepdk3_v108_20260904/raw_inverter.cir
+
+
+Note: No compatibility mode selected!
+
+warning, model type mismatch in line
+    np0 out in vdd vdd pfet
+warning, model type mismatch in line
+    nn0 out in 0 0 nfet
+max line length 1254, max subst. per line 0, number of lines 50
+
+Circuit: * freepdk3 反相器直流和瞬态闸门
+
+Warning: Model issue on line 16 :
+  .model nfet nmos l=1.5e-08 devtype=1 easub=4.0727 ni0sub=1.1055e+16 bg0s ...
+Only MOS device levels 1-6,8-10,14,49,54-58,60,68,73 are supported in this binary
+
+Warning: Model issue on line 145 :
+  .model pfet pmos l=1.5e-08 devtype=0 easub=4.1312 ni0sub=4.3638e+16 bg0s ...
+Only MOS device levels 1-6,8-10,14,49,54-58,60,68,73 are supported in this binary
+
+Error on line 5 or its substitute:
+  np0 out in vdd vdd pfet
+Unknown device type for model pfet
+    Simulation interrupted due to error!
+
+进程退出码: 1

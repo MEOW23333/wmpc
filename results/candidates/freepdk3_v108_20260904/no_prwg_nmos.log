@@ -1,0 +1,36 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/freepdk3_v108_20260904/no_prwg_nmos.log results/candidates/freepdk3_v108_20260904/no_prwg_nmos.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1229, max subst. per line 0, number of lines 44
+
+Circuit: * freepdk3 no-prwg nmos gate
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 8
+                          * freepdk3 no-prwg nmos gate
+                          DC transfer characteristic  Fri Sep  4 14:39:20  2026
+--------------------------------------------------------------------------------
+Index   v-sweep         v(g)            i(vd)           
+--------------------------------------------------------------------------------
+0	0.000000e+00	0.000000e+00	-5.16616e-09	
+1	1.000000e-01	1.000000e-01	-1.20224e-07	
+2	2.000000e-01	2.000000e-01	-1.96622e-06	
+3	3.000000e-01	3.000000e-01	-1.00008e-05	
+4	4.000000e-01	4.000000e-01	-2.43812e-05	
+5	5.000000e-01	5.000000e-01	-4.16704e-05	
+6	6.000000e-01	6.000000e-01	-5.80027e-05	
+7	7.000000e-01	7.000000e-01	-7.37133e-05	
+ngspice-44+ done

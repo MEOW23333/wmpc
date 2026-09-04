@@ -1,0 +1,19 @@
+* FreePDK3 反相器直流和瞬态闸门
+.include results/candidates/freepdk3_v108_20260904/models/raw_hspice_flat.mod
+VDD vdd 0 0.7
+VIN in 0 PULSE(0 0.7 1p 0.2p 0.2p 4p 10p)
+NP0 out in vdd vdd pfet
+NN0 out in 0 0 nfet
+CLOAD out 0 1f
+.control
+pre_osdi /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/toolchain_check/bsim_versions/bsimcmg_v108.osdi
+op
+dc VIN 0 0.7 0.1
+print v(in) v(out)
+tran 0.1p 20p
+meas tran vout_input_low FIND v(out) AT=0.5p
+meas tran vout_input_high FIND v(out) AT=3p
+meas tran vout_after_fall FIND v(out) AT=8p
+quit
+.endc
+.end
