@@ -60,7 +60,6 @@
 +LRDSW=0
 +ARDSW=0
 +BRDSW=1e-08
-+PRWG=0
 +CIT=0
 +cdsc=0.259764
 +LCDSC=0
@@ -142,7 +141,7 @@
 
 .model pfet bsimcmg
 +L=1.5e-08
-+TYPE=-1
++TYPE=0
 +EASUB=4.1312
 +NI0SUB=4.3638e+16
 +BG0SUB=1.0379
@@ -188,7 +187,6 @@
 +LRDSW=0
 +ARDSW=0
 +BRDSW=1e-08
-+PRWG=0
 +CIT=0
 +cdsc=0.302194
 +LCDSC=0
