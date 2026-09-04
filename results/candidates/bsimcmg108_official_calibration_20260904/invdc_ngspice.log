@@ -1,0 +1,33 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/bsimcmg108_official_calibration_20260904/invdc_ngspice.log results/candidates/bsimcmg108_official_calibration_20260904/invdc_ngspice.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1513, max subst. per line 0, number of lines 33
+
+Circuit: * bsim-cmg 108 official inverter dc calibration
+
+Warning: Model issue on line 8 :
+  .model nmos1 bsimcmg bulkmod=1 capmod=0 coremod=0 cgeomod=0 type=1 geomo ...
+unrecognized parameter (nigc) - ignored
+unrecognized parameter (pclmgcv) - ignored
+unrecognized parameter (prwg) - ignored
+unrecognized parameter (vasat) - ignored
+unrecognized parameter (vasatcv) - ignored
+
+Warning: Model issue on line 8 :
+  .model pmos1 bsimcmg bulkmod=1 capmod=0 coremod=0 cgeomod=0 type=0 geomo ...
+unrecognized parameter (nigc) - ignored
+unrecognized parameter (pclmgcv) - ignored
+unrecognized parameter (prwg) - ignored
+unrecognized parameter (vasat) - ignored
+unrecognized parameter (vasatcv) - ignored
+
+Error on line 6 or its substitute:
+  np1 vo vi supply 0 pmos1 tfin=15n l=30n nfin=10 nrs=1 nrd=1
+  unknown parameter (tfin) 
+    Simulation interrupted due to error!
+

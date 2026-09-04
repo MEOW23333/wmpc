@@ -1,0 +1,15 @@
+* BSIM-CMG 108 official inverter DC calibration
+.include results/candidates/bsimcmg108_official_calibration_20260904/models/modelcard_nmos_geometry.mod
+.include results/candidates/bsimcmg108_official_calibration_20260904/models/modelcard_pmos_geometry.mod
+VDD supply 0 1.0
+VIN vi 0 0
+NP1 vo vi supply 0 pmos1
+NN1 vo vi 0 0 nmos1
+.control
+pre_osdi /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/toolchain_check/bsim_versions/bsimcmg_v108.osdi
+op
+dc VIN 0 1 0.01
+print v(vi) v(vo)
+quit
+.endc
+.end

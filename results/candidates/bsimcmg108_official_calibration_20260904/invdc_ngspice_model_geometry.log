@@ -1,0 +1,36 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/bsimcmg108_official_calibration_20260904/invdc_ngspice_model_geometry.log results/candidates/bsimcmg108_official_calibration_20260904/invdc_ngspice_model_geometry.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1548, max subst. per line 0, number of lines 33
+
+Circuit: * bsim-cmg 108 official inverter dc calibration
+
+Warning: Model issue on line 8 :
+  .model nmos1 bsimcmg bulkmod=1 capmod=0 coremod=0 cgeomod=0 type=1 geomo ...
+unrecognized parameter (nigc) - ignored
+unrecognized parameter (pclmgcv) - ignored
+unrecognized parameter (prwg) - ignored
+unrecognized parameter (vasat) - ignored
+unrecognized parameter (vasatcv) - ignored
+
+Warning: Model issue on line 8 :
+  .model pmos1 bsimcmg bulkmod=1 capmod=0 coremod=0 cgeomod=0 type=0 geomo ...
+unrecognized parameter (nigc) - ignored
+unrecognized parameter (pclmgcv) - ignored
+unrecognized parameter (prwg) - ignored
+unrecognized parameter (vasat) - ignored
+unrecognized parameter (vasatcv) - ignored
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Parameter EOTACC is out of bounds!
+Using SPARSE 1.3 as Direct Linear Solver
+Parameter EOTACC is out of bounds!
+OSDI(debug) nn1: Warning: VSAT(0.000000) = 0.000000e+00 is less than 1K, setting it to 1K.
+OSDI(debug) nn1: Warning: VSAT1(0.000000) = 0.000000e+00 is less than 1K, setting it to 1K.
+OSDI(debug) nn1: Warning: VSATCV(0.000000) = 0.000000e+00 is less than 1K, setting it to 1K.
