@@ -1,0 +1,30 @@
+{
+  "name": "input_rise_s0_c5",
+  "direction": "rise",
+  "slew_ps": 2.0,
+  "cap_pf": 0.07974,
+  "reference_delay_ps": 474.7,
+  "reference_transition_ps": 424.0,
+  "reference_table": "cell_fall/fall_transition",
+  "returncode": 0,
+  "runtime_sec": 1.978227887302637,
+  "max_rss_kb": 11704,
+  "delay_ps": 346.30740000000003,
+  "transition_ps": 295.33070000000004,
+  "delay_relative_error": 0.2704710343374762,
+  "transition_relative_error": 0.30346533018867916,
+  "ymin_v": 5.200237e-07,
+  "ymax_v": 0.7001201,
+  "rails_ok": true,
+  "finite_measurements": true,
+  "warnings": [
+    "Warning: Model issue on line 166 :",
+    "Warning: Model issue on line 31 :",
+    "Warning: can't find the initialization file spinit.",
+    "unrecognized parameter (fech) - ignored"
+  ],
+  "numerical_pass": false,
+  "strict_pass": false,
+  "netlist_sha256": "a4c8a81f299ef6673947db012ca6e4f456e819b87c53ce493a8edc94514f585a",
+  "log_sha256": "9d7bfaea4a0e97162faae58c432ad06acfbb6e43bab5756537e17ffb309c70b4"
+}

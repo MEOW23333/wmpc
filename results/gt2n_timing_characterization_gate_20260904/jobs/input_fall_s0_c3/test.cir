@@ -1,0 +1,22 @@
+* GT2N timing-table quantitative gate
+.include /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/full_adapter_with4_20260903/model_card_osdi.sp
+.include /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/full_adapter_with4_20260903/cells_osdi.cdl
+VDD vdd 0 0.7
+VSS vss 0 0
+V_A A 0 PWL(0 0.7 2e-10 0.7 2.05e-10 0 5e-09 0)
+CLOAD Y 0 2.532e-14
+XU A Y vdd vss gt2_6t_inv_x1_w13_svt
+.temp 25
+.options method=gear maxord=2 reltol=1e-5 abstol=1e-15 vntol=1e-6
+.control
+pre_osdi /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/official_bsimcmg111_20260903/build/bsimcmg_v111_official.osdi
+set noaskquit
+tran 1e-13 5e-09
+meas tran delay trig v(a) val=0.35 fall=1 targ v(y) val=0.35 rise=1
+meas tran transition trig v(y) val=0.21 rise=1 targ v(y) val=0.49 rise=1
+meas tran ymin min v(y) from=2e-10 to=5e-09
+meas tran ymax max v(y) from=2e-10 to=5e-09
+wrdata /home/ZhangLexin/PALS/wmpc/results/gt2n_timing_characterization_gate_20260904/jobs/input_fall_s0_c3/waveform.dat time v(a) v(y)
+quit
+.endc
+.end
