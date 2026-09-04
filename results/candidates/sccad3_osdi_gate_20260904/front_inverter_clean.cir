@@ -1,0 +1,20 @@
+* SCCAD 3nm inverter gate
+.include results/candidates/sccad3_osdi_gate_20260904/models/front_osdi_clean.sp
+VDD vdd 0 0.7
+VIN in 0 PULSE(0 0.7 10p 2p 2p 80p 200p)
+NP0 out in vdd vdd PMOS_LVT
+NN0 out in 0 0 NMOS_LVT
+CLOAD out 0 1f
+.control
+pre_osdi /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/toolchain_check/openvaf/bsimcmg_v111.osdi
+op
+dc VIN 0 0.7 0.1
+print v(in) v(out)
+tran 1p 400p
+meas tran vout_low_1 FIND v(out) AT=5p
+meas tran vout_high_1 FIND v(out) AT=50p
+meas tran vout_low_2 FIND v(out) AT=150p
+meas tran vout_high_2 FIND v(out) AT=250p
+quit
+.endc
+.end

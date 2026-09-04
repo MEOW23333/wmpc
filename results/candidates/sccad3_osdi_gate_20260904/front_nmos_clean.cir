@@ -1,0 +1,13 @@
+* SCCAD 3nm NMOS gate
+.include results/candidates/sccad3_osdi_gate_20260904/models/front_osdi_clean.sp
+VD d 0 0.7
+VG g 0 0
+NN0 d g 0 0 NMOS_LVT
+.control
+pre_osdi /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/toolchain_check/openvaf/bsimcmg_v111.osdi
+op
+dc VG 0 0.7 0.1
+print v(g) i(vd)
+quit
+.endc
+.end

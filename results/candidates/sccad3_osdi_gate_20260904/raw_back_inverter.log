@@ -1,0 +1,26 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/sccad3_osdi_gate_20260904/raw_back_inverter.log results/candidates/sccad3_osdi_gate_20260904/raw_back_inverter.cir
+
+
+Note: No compatibility mode selected!
+
+Warning: Unusual leading characters like ')' or others out of '= [] ? () & % $"!:,\f'
+    in netlist or included files, will be replaced with '*'.
+    check line  )
+    line no. 68 from file results/candidates/sccad3_osdi_gate_20260904/models/back_source.sp!
+
+warning, model type mismatch in line
+    np0 out in vdd vdd pmos_lvt
+warning, model type mismatch in line
+    nn0 out in 0 0 nmos_lvt
+max line length 1390, max subst. per line 0, number of lines 37
+
+Circuit: * sccad 3nm inverter gate
+
+Error on line 11 or its substitute:
+  .lib tt
+ unimplemented dot command '.lib'
+    Simulation interrupted due to error!
+

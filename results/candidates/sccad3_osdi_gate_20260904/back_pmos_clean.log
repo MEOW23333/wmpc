@@ -1,0 +1,53 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/sccad3_osdi_gate_20260904/back_pmos_clean.log results/candidates/sccad3_osdi_gate_20260904/back_pmos_clean.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1364, max subst. per line 0, number of lines 27
+
+Circuit: * sccad 3nm pmos gate
+
+Warning: Model issue on line 68 :
+  .model pmos_lvt bsimcmg_va bulkmod=1 geomod=2 capmod=1 coremod=0 cgeomod ...
+unrecognized parameter (capmod) - ignored
+unrecognized parameter (coremod) - ignored
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+OSDI(debug) np0: Warning: WeffCV0 = -9.316000e-10 <= 1.0e-9.
+OSDI(debug) np0: Warning: PDIBL2_i = -1.640818e-01 is negative.
+OSDI(debug) np0: Warning: MEXP_i = 1.194201e+00 < 2. Setting MEXP_i = 2.
+Using SPARSE 1.3 as Direct Linear Solver
+OSDI(debug) np0: Warning: WeffCV0 = -9.316000e-10 <= 1.0e-9.
+OSDI(debug) np0: Warning: PDIBL2_i = -1.640818e-01 is negative.
+OSDI(debug) np0: Warning: MEXP_i = 1.194201e+00 < 2. Setting MEXP_i = 2.
+
+No. of Data Rows : 1
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+OSDI(debug) np0: Warning: WeffCV0 = -9.316000e-10 <= 1.0e-9.
+OSDI(debug) np0: Warning: PDIBL2_i = -1.640818e-01 is negative.
+OSDI(debug) np0: Warning: MEXP_i = 1.194201e+00 < 2. Setting MEXP_i = 2.
+Using SPARSE 1.3 as Direct Linear Solver
+OSDI(debug) np0: Warning: WeffCV0 = -9.316000e-10 <= 1.0e-9.
+OSDI(debug) np0: Warning: PDIBL2_i = -1.640818e-01 is negative.
+OSDI(debug) np0: Warning: MEXP_i = 1.194201e+00 < 2. Setting MEXP_i = 2.
+
+No. of Data Rows : 8
+                             * sccad 3nm pmos gate
+                             DC transfer characteristic  Fri Sep  4 21:23:04  2026
+--------------------------------------------------------------------------------
+Index   v-sweep         v(g)            i(vsrc)         
+--------------------------------------------------------------------------------
+0	7.000000e-01	7.000000e-01	-6.70752e-12	
+1	6.000000e-01	6.000000e-01	-3.07523e-10	
+2	5.000000e-01	5.000000e-01	-1.39843e-08	
+3	4.000000e-01	4.000000e-01	-4.77128e-07	
+4	3.000000e-01	3.000000e-01	-4.81825e-06	
+5	2.000000e-01	2.000000e-01	-1.53424e-05	
+6	1.000000e-01	1.000000e-01	-2.86027e-05	
+7	1.387779e-16	1.387779e-16	-4.25223e-05	
+ngspice-44+ done
