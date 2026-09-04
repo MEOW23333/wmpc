@@ -1,0 +1,17 @@
+* ASAP5 LRSD scan 1e-9
+.include results/candidates/asap5_v107_fixed_20260904/nmos_1e-9.pm
+.include results/candidates/asap5_v107_fixed_20260904/pmos_1e-9.pm
+VDD vdd 0 0.7
+VIN in 0 0
+NP0 out in vdd vdd pmos_lvt
+NN0 out in 0 0 nmos_lvt
+RLOAD out 0 1meg
+.control
+pre_osdi /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/toolchain_check/bsim_versions/bsimcmg_v107.osdi
+op
+print v(out)
+dc VIN 0 0.7 0.1
+print v(in) v(out)
+quit
+.endc
+.end

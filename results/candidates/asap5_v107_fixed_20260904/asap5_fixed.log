@@ -1,0 +1,37 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/asap5_v107_fixed_20260904/asap5_fixed.log results/candidates/asap5_v107_fixed_20260904/asap5_fixed.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1499, max subst. per line 0, number of lines 113
+
+Circuit: * asap5 bsim-cmg 107 osdi fixed model-type probe
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Parameter LRSD is out of bounds!
+Parameter LRSD is out of bounds!
+doAnalyses: 1 errors occurred during initialization detected in routine "OSDI setup_model"
+
+op simulation(s) aborted
+Warning from checkvalid: vector out is not available or has zero length.
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Parameter LRSD is out of bounds!
+Parameter LRSD is out of bounds!
+doAnalyses: 1 errors occurred during initialization detected in routine "OSDI setup_model"
+
+dc simulation(s) aborted
+Warning from checkvalid: vector in is not available or has zero length.
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Parameter LRSD is out of bounds!
+Parameter LRSD is out of bounds!
+doAnalyses: 1 errors occurred during initialization detected in routine "OSDI setup_model"
+
+tran simulation(s) aborted
+Warning from checkvalid: vector in is not available or has zero length.
+ngspice-44+ done

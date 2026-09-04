@@ -1,0 +1,17 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/release/src/ngspice -b -o results/candidates/asap5_v107_fixed_20260904/asap5_instance_geometry.log results/candidates/asap5_v107_fixed_20260904/asap5_instance_geometry.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1492, max subst. per line 0, number of lines 111
+
+Circuit: * asap5 107 osdi instance geometry
+
+Error on line 6 or its substitute:
+  np0 out in vdd vdd pmos_lvt tfin=5n hfin=32n nfin=1 l=14n lrsd=16n
+  unknown parameter (tfin) 
+    Simulation interrupted due to error!
+
