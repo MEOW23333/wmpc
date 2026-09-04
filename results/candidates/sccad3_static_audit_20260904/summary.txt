@@ -1,0 +1,4 @@
+all_path_count=2854
+candidate_path_count=8
+clone_bytes=81007
+repo_present=true

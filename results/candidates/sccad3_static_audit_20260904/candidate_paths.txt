@@ -1,0 +1,8 @@
+cadence/Back-side Version/PDK Development/MODEL/3nm_GAA.sp
+cadence/Back-side Version/PDK Development/SCRIPTS/auto_curve_fitting.sp
+cadence/Front-side version/PDK_Development/MODEL/3nm_GAA.sp
+cadence/Front-side version/PDK_Development/SCRIPTS/auto_curve_fitting.sp
+synopsys/Back-side version/PDK development/MODEL/3nm_GAA.sp
+synopsys/Back-side version/PDK development/SCRIPTS/auto_curve_fitting.sp
+synopsys/Front-side version/PDK development/MODEL/3nm_GAA.sp
+synopsys/Front-side version/PDK development/SCRIPTS/auto_curve_fitting.sp
