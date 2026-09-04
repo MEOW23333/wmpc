@@ -1,6 +1,7 @@
 release/
 debug/
 build/
+build_*/
 experiments/
 pals_data/
 precondition_experiments/

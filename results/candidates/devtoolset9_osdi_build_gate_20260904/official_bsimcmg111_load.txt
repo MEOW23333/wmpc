@@ -1,0 +1,19 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ build_devtoolset9_osdi_20260904/src/ngspice -b /home/ZhangLexin/PALS/wmpc-gt2n-compat/results/gt2n_ngspice_compat_20260903/flavor_binding_sweep_20260903/w13_svt/gt2_6t_inv_x1_w13_svt_0.7.sp
+
+
+Note: No compatibility mode selected!
+
+max line length 1451, max subst. per line 0, number of lines 778
+
+Circuit: * gt2_6t_inv_x1_w13_svt
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+No. of Data Rows : 1
+v(y) = 5.731836e-07
+ngspice-44+ done
