@@ -148,14 +148,16 @@ def run_one(task: dict) -> dict:
     warnings = sorted(set(re.findall(r'(?im)^.*(?:warning|error|non-convergence|singular|unknown parameter|ignored).*$', output)))
     rss_match = re.search(r'(?m)^WMPC_MAXRSS_KB=(\d+)$', output)
     finite = all(value is not None and math.isfinite(value) for value in values.values())
+    solver_aborted = bool(re.search(r'(?im)(?:tran simulation\(s\) aborted|timestep too small|convergence failed)', output))
+    solver_completed = code == 0 and not solver_aborted
     delay_ps = values['delay'] * 1e12 if values['delay'] is not None else None
     transition_ps = values['transition'] * 1e12 if values['transition'] is not None else None
     delay_error = abs(delay_ps - task['reference_delay_ps']) / task['reference_delay_ps'] if delay_ps is not None else None
     transition_error = abs(transition_ps - task['reference_transition_ps']) / task['reference_transition_ps'] if transition_ps is not None else None
     rails_ok = finite and values['ymin'] >= -0.01 * VDD and values['ymax'] <= 1.01 * VDD
-    numerical_pass = code == 0 and finite and rails_ok and delay_error is not None and transition_error is not None and delay_error <= 0.10 and transition_error <= 0.10
+    numerical_pass = solver_completed and finite and rails_ok and delay_error is not None and transition_error is not None and delay_error <= 0.10 and transition_error <= 0.10
     record = {
-        **task, 'returncode': code, 'runtime_sec': elapsed,
+        **task, 'returncode': code, 'solver_completed': solver_completed, 'runtime_sec': elapsed,
         'max_rss_kb': int(rss_match.group(1)) if rss_match else None,
         'delay_ps': delay_ps, 'transition_ps': transition_ps,
         'delay_relative_error': delay_error, 'transition_relative_error': transition_error,
@@ -223,7 +225,8 @@ def main() -> None:
         'source_lib': str(LIB), 'source_lib_sha256': digest(LIB), 'model_adapter': str(MODEL),
         'model_adapter_sha256': digest(MODEL), 'cells_adapter': str(CELLS), 'cells_adapter_sha256': digest(CELLS),
         'osdi': str(OSDI), 'osdi_sha256': digest(OSDI), 'ngspice': str(NGSPICE), 'ngspice_sha256': digest(NGSPICE),
-        'converged_processes': sum(r['returncode'] == 0 for r in results),
+        'normal_exit_processes': sum(r['returncode'] == 0 for r in results),
+        'converged_processes': sum(r['solver_completed'] for r in results),
         'numerical_pass_count': sum(r['numerical_pass'] for r in results),
         'strict_pass_count': sum(r['strict_pass'] for r in results),
         'warning_count': sum(bool(r['warnings']) for r in results),
