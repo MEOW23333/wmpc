@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """GT2N standard-cell timing-table quantitative gate."""
+import argparse
 import concurrent.futures
 import hashlib
 import json
@@ -164,10 +165,26 @@ def run_one(task: dict) -> dict:
         'netlist_sha256': digest(net_path), 'log_sha256': digest(log_path),
     }
     (job / 'result.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n')
+    waveform = job / 'waveform.dat'
+    if waveform.exists():
+        waveform.unlink()
     return record
 
 
 def main() -> None:
+    global OSDI, NGSPICE, OUT
+    parser = argparse.ArgumentParser(description='GT2N 表征时序定量闸门')
+    parser.add_argument('--osdi', type=Path, default=OSDI, help='待加载的 OSDI 模型路径')
+    parser.add_argument('--ngspice', type=Path, default=NGSPICE, help='ngspice 二进制路径')
+    parser.add_argument('--output', type=Path, default=OUT, help='本次输出目录')
+    parser.add_argument('--workers', type=int, default=32, help='最大并发进程数')
+    parser.add_argument('--date', default='2026-09-04', help='写入汇总的实验日期')
+    args = parser.parse_args()
+    if args.workers < 1:
+        raise ValueError('并发进程数必须为正')
+    OSDI = args.osdi.resolve()
+    NGSPICE = args.ngspice.resolve()
+    OUT = args.output.resolve()
     for path in (LIB, MODEL, CELLS, OSDI, NGSPICE):
         if not path.is_file():
             raise FileNotFoundError(path)
@@ -196,13 +213,13 @@ def main() -> None:
                 'reference_table': 'cell_rise/rise_transition',
             })
     started = time.perf_counter()
-    with concurrent.futures.ThreadPoolExecutor(max_workers=32) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as executor:
         results = list(executor.map(run_one, tasks))
     errors_delay = [r['delay_relative_error'] for r in results if r['delay_relative_error'] is not None]
     errors_transition = [r['transition_relative_error'] for r in results if r['transition_relative_error'] is not None]
     summary = {
-        'experiment': 'GT2N timing-characterization quantitative gate', 'date': '2026-09-04',
-        'cell': CELL, 'task_count': len(tasks), 'target_concurrency': 32, 'actual_max_workers': 32,
+        'experiment': 'GT2N timing-characterization quantitative gate', 'date': args.date,
+        'cell': CELL, 'task_count': len(tasks), 'target_concurrency': args.workers, 'actual_max_workers': args.workers,
         'source_lib': str(LIB), 'source_lib_sha256': digest(LIB), 'model_adapter': str(MODEL),
         'model_adapter_sha256': digest(MODEL), 'cells_adapter': str(CELLS), 'cells_adapter_sha256': digest(CELLS),
         'osdi': str(OSDI), 'osdi_sha256': digest(OSDI), 'ngspice': str(NGSPICE), 'ngspice_sha256': digest(NGSPICE),
