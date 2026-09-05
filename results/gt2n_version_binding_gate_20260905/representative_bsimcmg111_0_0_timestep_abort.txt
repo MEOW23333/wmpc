@@ -1,0 +1,45 @@
+Warning: can't find the initialization file spinit.
+
+Note: ngspice start command line:
+ /home/ZhangLexin/PALS/wmpc/build_devtoolset9_osdi_20260904/src/ngspice -b /home/ZhangLexin/PALS/wmpc/results/gt2n_version_binding_gate_20260905/rechecked_111_0_0/jobs/input_rise_s5_c0/test.cir
+
+
+Note: No compatibility mode selected!
+
+max line length 1372, max subst. per line 0, number of lines 723
+
+Circuit: * gt2n timing-table quantitative gate
+
+Doing analysis at TEMP = 25.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vdd                                        0.7
+vss                                          0
+a                                            0
+y                                          0.7
+v_a#branch                                   0
+vss#branch                         1.59986e-10
+vdd#branch                        -1.60071e-10
+
+ Reference value :  7.58900e-10
+ Reference value :  1.89730e-09
+ Reference value :  3.05130e-09
+ Reference value :  4.16090e-09
+doAnalyses: TRAN:  Timestep too small; time = 5e-09, timestep = 1.25e-25: trouble with node "v_a#branch"
+
+
+tran simulation(s) aborted
+
+No. of Data Rows : 50019
+delay               =  2.043210e-11 targ=  2.786071e-10 trig=  2.581750e-10
+transition          =  1.093180e-11 targ=  2.835271e-10 trig=  2.725954e-10
+ymin                =  5.185098e-07 at=  3.859000e-10
+ymax                =  7.004628e-01 at=  2.226080e-10
+ngspice-44+ done
+WMPC_MAXRSS_KB=12232
