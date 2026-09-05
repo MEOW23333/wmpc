@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  node distance=3.5mm and 5mm,
+  box/.style={draw, rounded corners, align=center, minimum height=7mm, inner sep=3pt},
+  data/.style={box, fill=blue!7},
+  learn/.style={box, fill=orange!13},
+  solver/.style={box, fill=green!10},
+  arrow/.style={-{Latex[length=1.6mm]}, thick}
+]
+\node[data] (net) {Transistor netlist\\with cell instances};
+\node[learn, right=of net] (prop) {Type-shared\\proposers};
+\node[learn, right=of prop] (agg) {Conflict-aware\\aggregator};
+\node[solver, right=of agg] (guard) {Residual and\\range guards};
+\node[solver, right=of guard] (newton) {Native Newton\\solver};
+\draw[arrow] (net) -- node[above]{partition} (prop);
+\draw[arrow] (prop) -- node[above]{local candidates} (agg);
+\draw[arrow] (agg) -- node[above]{$x^{\mathrm{warm}}$} (guard);
+\draw[arrow] (guard) -- node[above]{accepted start} (newton);
+\draw[arrow] (net.south) to[bend right=24] node[below]{native start $x^{\mathrm{base}}$} (guard.south);
+\draw[arrow] (guard.south) to[bend right=28] node[below]{fallback} (newton.south);
+\node[draw, dashed, rounded corners, fit=(prop)(agg), inner sep=2mm, label=above:{\scriptsize learned suggestion}] {};
+\end{tikzpicture}
+

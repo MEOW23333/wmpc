@@ -1,0 +1,95 @@
+\section{Semantic divide and conquer produces safe starts}
+\label{sec:design}
+
+\system{} follows the standard-cell hierarchy from local state prediction to global reconciliation. The design has four steps: semantic partitioning, type-shared proposing, conflict-aware aggregation, and guarded native solving. Each step closes one requirement from Section~\ref{sec:background}. The partition creates a reusable learning unit, the aggregator handles overlap, and the guards preserve the solver contract.
+
+\subsection{Type sharing decouples training from instance count}
+
+The netlist parser identifies each standard-cell instance, its type, pin order, internal nodes, and neighboring instances. It then builds the local-to-global map $\pi$. Power and ground nets retain explicit roles. The parser rejects any instance whose transistor-level subcircuit or pin mapping disagrees with the characterized library entry.
+
+Each cell type $\tau$ owns one proposer $P_{\theta_\tau}$. For an instance $c_i$ of that type, the proposer reads a length-$L$ local history
+\begin{equation}
+H_i=\{x_{i,k-L+1},\ldots,x_{i,k}\}, \qquad L=3,
+\end{equation}
+plus the Newton index, $\log_{10}(|g_{\min}|+\epsilon)$, and one-hop context. The local history contains signs and log magnitudes of the current and updated solver states. The one-hop tokens contain neighbor dynamics, the focal pin, the neighbor pin, and the neighbor cell type. Padding masks make token count independent of fanout.
+
+The proposer first embeds every history step. Transformer encoder blocks model relations among local variables~\cite{vaswani2017attention}, and a gated recurrent unit summarizes the three-step trajectory~\cite{cho2014gru}. A second recurrent path encodes one-hop summaries. Mean pooling, maximum pooling, and a count embedding retain both typical and dominant neighbor behavior. A learned gate applies the neighbor correction to the local representation. This structure gives the cell-local path an explicit training signal even when the neighbor path could fit the same sample.
+
+Circuit corrections span many orders of magnitude and change sign near switching boundaries. A direct regression head overweights the largest values. The proposer therefore predicts log magnitude $\widehat{\ell}_{i,j}$ and a continuous sign score $\widehat{s}_{i,j}$. It reconstructs each candidate as
+\begin{equation}
+p_{i,j}=\tanh(\widehat{s}_{i,j})10^{\widehat{\ell}_{i,j}}.
+\label{eq:proposal}
+\end{equation}
+Type sharing applies the same proposer to every instance with type $\tau$. Batched inference makes model storage scale with the number of cell types, while arithmetic scales with the number of instances.
+
+\subsection{Conflict statistics identify difficult shared nets}
+
+The scatter step maps each $p_{i,j}$ to its global variable through $\pi$. A global variable can receive zero, one, or several candidates. For each nonempty set $\mathcal{P}_v$, \system{} records candidate count, sign agreement, variance, maximum magnitude, and the gap between the two largest magnitudes. It also records the cell type, pin role, external-port flag, and instance identity for each candidate.
+
+These statistics separate two cases that proposal averaging conflates. Several input pins can agree because all local views observe a stable net. A driving output can disagree with its loads during a transition because the driver already reflects the new state. The aggregator learns this distinction from pin semantics and graph context. The model never assigns a fixed priority to a pin class, since weak drivers, pass gates, and bidirectional cells require circuit context.
+
+\subsection{Hierarchical aggregation restores global coupling}
+
+The aggregator $A_\phi$ builds a heterogeneous netlist graph with device, subcircuit, net, ground, and target-port nodes. Static node attributes encode element class and topology. Edge attributes encode connection and pin roles. The model injects each target port with the current state, $g_{\min}$, proposal embeddings, and conflict statistics.
+
+Edge-aware graph attention exchanges information on the netlist~\cite{velickovic2018gat,brody2022gatv2}. Standard-cell supernodes add a second level. Each supernode pools the states of one cell instance, exchanges information with adjacent cell supernodes, and returns the cell context to its ports. This path lets two pins of the same instance share state without requiring many transistor-level message-passing layers.
+
+For candidate $m$ at global variable $v$, the aggregator computes
+\begin{equation}
+a_{v,m}=\frac{\exp q_\phi(e_{v,m},h_v,h_{c(m)})}
+{\sum_{r\in\mathcal{P}_v}\exp q_\phi(e_{v,r},h_v,h_{c(r)})},
+\label{eq:attention}
+\end{equation}
+where $e_{v,m}$ encodes the proposal and pin semantics, $h_v$ denotes netlist context, and $h_{c(m)}$ denotes cell-supernode context. A readout combines the weighted candidates, current variable state, and context. Separate heads retain small-correction accuracy alongside rare large corrections.
+
+The aggregator outputs one global correction $\widehat{\delta x}$. Variables without learned support keep their native values. This partial-coverage rule lets characterized and uncharacterized cells coexist, while the coverage experiment reports the exact learned fraction.
+
+\subsection{Joint supervision matches the solver objective}
+
+The proposer and aggregator use sign and log-magnitude supervision. For valid target variables $j$, the base loss is
+\begin{equation}
+\mathcal{L}=\frac{1}{N}\sum_j w_j(\widehat{\ell}_j-\ell_j)^2
++\lambda_s\frac{1}{N}\sum_j(\widehat{s}_j-s_j)^2.
+\label{eq:loss}
+\end{equation}
+The weight $w_j$ balances log-magnitude bins. The proposer adds an auxiliary loss to its local-only output. The aggregator adds regime and proposal-attention losses when the corresponding heads participate in training.
+
+Data generation binds every target to circuit identity, time, continuation value, stage entry, node ordering, and converged residual. We split by circuit before sequence extraction. This rule prevents adjacent Newton states from one trajectory from appearing on both sides of the train-test boundary. Each cell type uses \NumTrainingCircuits{} generated training circuits. Aggregator training uses \NumAggregatorCircuits{} mixed-cell circuits with 5 to 25 instances and maximum fanout 3.
+
+\subsection{Native guards bound prediction risk}
+
+The guard evaluates both $x^{\mathrm{base}}$ and $x^{\mathrm{warm}}$ at the same stage boundary. It accepts the learned state only when four conditions hold:
+\begin{align}
+\dim(x^{\mathrm{warm}})&=\dim(x^{\mathrm{base}}), \\
+x^{\mathrm{warm}}&\in\mathbb{R}^{n}, \\
+|x^{\mathrm{warm}}_v|&\le \VoltageGuard,\quad
+|x^{\mathrm{warm}}_b|\le \BranchGuard, \\
+\|F(x^{\mathrm{warm}})\|_2&\le \GammaValue\|F(x^{\mathrm{base}})\|_2.
+\label{eq:guard}
+\end{align}
+The third line applies separate bounds to voltage and branch variables. The validation set fixes all thresholds before the test run.
+
+An accepted warm start can still enter a slow attraction path. The runtime watches the native solver's finite-value, damping, residual-progress, and iteration-limit signals. Stagnation restores the stage-entry checkpoint and restarts with $x^{\mathrm{base}}$. The log records the first attempt and the restart. No failed warm attempt disappears from end-to-end time.
+
+\begin{figure}[t]
+\small
+\setlength{\fboxsep}{5pt}
+\fbox{\begin{minipage}{0.94\columnwidth}
+\textbf{Algorithm 1: Guarded semantic warm start}
+\begin{enumerate}[leftmargin=4mm,itemsep=0pt,topsep=2pt]
+\item Parse cell instances and build $\pi$.
+\item Batch $P_{\theta_\tau}$ over instances of each type $\tau$.
+\item Scatter candidates and compute conflict statistics.
+\item Run $A_\phi$ and form $x^{\mathrm{warm}}$ using Eq.~\ref{eq:warm}.
+\item Apply dimension, finite-value, range, and residual guards.
+\item Run native Newton from the accepted state.
+\item Restore the checkpoint and use $x^{\mathrm{base}}$ after stagnation.
+\item Return the native solution and a complete decision log.
+\end{enumerate}
+\end{minipage}}
+\caption{The runtime performs learned work before the native nonlinear solve and preserves a stage-level fallback point.}
+\label{alg:cellwarm}
+\end{figure}
+
+\system{} exposes two deployment controls. The residual ratio $\GammaValue$ sets the acceptance threshold. A coverage mask selects characterized cell types. Tighter settings increase fallback and reduce risk; broader settings admit more learned starts. Section~\ref{sec:evaluation} measures both controls with end-to-end accounting.
+

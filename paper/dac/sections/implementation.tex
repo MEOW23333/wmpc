@@ -1,0 +1,11 @@
+\section{Solver integration keeps native ownership}
+\label{sec:implementation}
+
+We implement \system{} in a derivative of \ngspice{} and a PyTorch inference service~\cite{quarles1993spice3,paszke2019pytorch}. The native solver exports stage-entry state, node ordering, time, $g_{\min}$, Newton index, and local history. The service parses the mapped transistor netlist once, caches static graphs, batches proposer calls by cell type, and runs one aggregator call per stage. A sidecar format carries vectors and provenance during offline evaluation. The integrated path uses the same schema without repeated text parsing.
+
+The solver stores a stage-entry checkpoint before injection. It checks prediction length before copying data into native arrays. The residual guard calls the existing nonlinear load path once for each candidate state and restores all temporary device state before Newton starts. A restart restores the checkpoint, including integration history and continuation parameters. This procedure prevents a rejected or stalled prediction from changing later stages.
+
+The training pipeline records the transistor netlist, process model, cell definition, node map, solver binary, model checkpoint, and run configuration with SHA-256 digests. Licensed 40-nm models remain outside the public artifact. The artifact includes parsers, cell manifests, hashes, and an ASAP7 reproduction path~\cite{clark2016asap7}. The final artifact also includes scripts that generate every paper table and result macro from raw paired-stage records.
+
+The proposer uses a Transformer-GRU encoder with separate sign and log heads. The aggregator uses edge-aware graph attention, explicit port nodes, cell supernodes, proposal attention, and regime-specific readouts. Training uses double precision to match exported solver traces. Inference can use the accelerator without moving the native sparse solve away from the CPU. The complete model footprint is \ModelMemory{}, and model inference accounts for \InferenceShare{} of \system{} runtime.
+

@@ -22,3 +22,7 @@ results/residual_mor_coarse_validation_20260824/smoke/
 results/residual_mor_coarse_validation_20260824/main_formula/
 results/residual_mor_coarse_validation_20260824/storage_substitution/
 results/residual_mor_coarse_validation_20260824/smoke_workpoint_manifest.json
+
+# Private paper strategy
+paper/dac/project_context.md
+paper/dac/.tools/

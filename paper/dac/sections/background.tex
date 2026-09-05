@@ -1,0 +1,47 @@
+\section{Warm starting reduces repeated nonlinear work}
+\label{sec:background}
+
+\subsection{Transient simulation exposes a stage-level target}
+
+After time discretization, a circuit simulator solves a nonlinear modified nodal equation at time $t_n$,
+\begin{equation}
+F_n(x_n;x_{n-1},u_n)=0,
+\label{eq:nonlinear}
+\end{equation}
+where $x_n$ contains node voltages and branch variables, $x_{n-1}$ carries integration history, and $u_n$ contains independent sources. Newton iteration computes
+\begin{equation}
+J_n(x_n^{(k)})\Delta x_n^{(k)}=-F_n(x_n^{(k)}), \quad
+x_n^{(k+1)}=x_n^{(k)}+\alpha_k\Delta x_n^{(k)}.
+\label{eq:newton}
+\end{equation}
+The Jacobian $J_n$ and damping coefficient $\alpha_k$ follow the native solver. Continuation methods can create several nonlinear stages at one time point by changing $g_{\min}$ or source strength~\cite{kundert1990steady}.
+
+The native solver supplies an initial state $x^{\mathrm{base}}$ at each stage. \system{} predicts a correction $\widehat{\delta x}$ and forms
+\begin{equation}
+x^{\mathrm{warm}}=x^{\mathrm{base}}+\widehat{\delta x}.
+\label{eq:warm}
+\end{equation}
+The training target uses the converged state from that same stage,
+\begin{equation}
+\delta x^*=x^{\mathrm{conv}}-x^{\mathrm{base}}.
+\label{eq:target}
+\end{equation}
+This target aligns supervision with the deployment goal. One-step Newton prediction would imitate an intermediate trajectory that the warm start seeks to shorten.
+
+\subsection{Overlapping cells create proposal conflicts}
+
+Let the transistor netlist form a graph $G=(V,E)$. Each standard-cell instance $c_i$ induces a local subgraph $G_i$ with internal variables $x_i^{\mathrm{int}}$ and port variables $x_i^{\mathrm{port}}$. Internal variables belong to one instance. A shared net can appear as an output pin, several input pins, and an interconnect node across multiple instances. The local subgraphs therefore overlap on ports.
+
+For a cell type $\tau$, all instances share proposer parameters $\theta_\tau$. A local-to-global map $\pi(i,j)=v$ assigns local variable $j$ of instance $i$ to global variable $v$. Proposers create the candidate set
+\begin{equation}
+\mathcal{P}_v=\{(p_{i,j},\tau_i,r_{i,j})\mid \pi(i,j)=v\},
+\label{eq:candidates}
+\end{equation}
+where $r_{i,j}$ records the pin role and instance metadata. Candidate disagreement carries physical information. A driving output and several input loads have different authority over a shared net, and their local views can disagree most during switching.
+
+\subsection{Strict success couples speed and accuracy}
+
+We count a paired stage as a strict success when the baseline and \system{} complete the same simulation task, satisfy the same native convergence tests, and meet the waveform tolerance. Every fallback remains visible in the record. For baseline and warm-start Newton counts $K_b$ and $K_w$, we report iteration reduction $(K_b-K_w)/K_b$. For end-to-end times $T_b$ and $T_w$, we report speedup $T_b/T_w$. $T_w$ includes input construction, model inference, guards, restarts, and native solving.
+
+Residual equality alone cannot establish waveform equality when nonlinear equations have several attraction regions. We therefore compare the complete output waveform, final nonlinear residual, and Kirchhoff current-law residual. This contract turns learned prediction error into a performance concern while the native solver retains responsibility for accepted accuracy.
+

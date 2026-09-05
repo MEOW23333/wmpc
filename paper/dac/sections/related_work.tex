@@ -1,0 +1,20 @@
+\section{CellWarm occupies the solver-assistance layer}
+\label{sec:related}
+
+\noindent\textbf{Native nonlinear circuit solving.}
+SPICE and its descendants solve modified nodal equations with Newton iteration, sparse linear algebra, damping, continuation, and adaptive time stepping~\cite{nagel1975spice3,quarles1993spice3,kundert1990steady}. These methods define the numerical authority in \system{}. Our contribution supplies a candidate initial state from repeated cell semantics and retains the native acceptance path.
+
+\noindent\textbf{Learned response prediction.}
+Neural surrogate models predict transient circuit responses and can bypass repeated numerical solves~\cite{cerny2022deep}. Surrogates target output approximation, so model error enters the delivered waveform. \system{} uses learning before Newton convergence and measures success through the native waveform.
+
+\noindent\textbf{Learned continuation and operating-point acceleration.}
+BoA-PTA tunes pseudo-transient analysis with Bayesian optimization~\cite{xing2022boa}. GPTA uses a graph neural network to improve transistor-level simulation~\cite{jin2025gpta}. ML-PTA uses two learned stages for nonlinear direct-current simulation~\cite{jin2025mlpta}. These methods target operating-point convergence or continuation choices. \system{} targets stage-level initial states in transient simulation and exploits standard-cell repetition.
+
+\noindent\textbf{Graph representation for circuits.}
+Graph neural networks encode relational structure through message passing~\cite{gilmer2017mpnn,velickovic2018gat,brody2022gatv2}. Whole-graph circuit models apply this representation at the complete-netlist level. \system{} splits representation across type-shared cell models and a global coupling graph. This structure fixes local model shape across instance counts and reserves global message passing for shared-net interaction.
+
+\noindent\textbf{Process design kits.}
+Open process kits support reproducible design research. FreePDK introduced an open variation-aware kit~\cite{stine2007freepdk}, while ASAP7 provides a predictive 7-nm FinFET kit~\cite{clark2016asap7}. We use a licensed 40-nm library for full industrial-cell coverage and ASAP7 for public reproduction. Every process enters results only after device, inverter, cell, and composition checks pass.
+
+\system{} therefore occupies a distinct solver-assistance layer. It learns reusable initial-state corrections, resolves their circuit-level coupling, and delegates final accuracy to native transient simulation.
+

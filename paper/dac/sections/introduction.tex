@@ -1,0 +1,33 @@
+\section{Cell semantics make warm starts reusable}
+\label{sec:introduction}
+
+Transistor-level simulation remains a verification bottleneck for large digital designs. Each transient time point requires a nonlinear solve, and each Newton iteration evaluates devices, assembles a Jacobian, and solves a sparse linear system~\cite{nagel1975spice3,quarles1993spice3}. Switching events make this workload uneven. A time point after many simultaneous transitions can require far more Newton work than a quiet interval, even when both points contain the same number of unknowns. Circuit teams pay this cost across corners, stimuli, and design revisions.
+
+Production \spice{} solvers warm-start each nonlinear solve from the previous time point, an extrapolated state, or a continuation stage~\cite{kundert1990steady,quarles1993spice3}. These rules preserve the solver's numerical contract, but they use limited information about the circuit's repeated logic structure. A large mapped digital netlist contains many instances of the same inverter, NAND gate, multiplexer, and sequential cell. Their local transistor states follow related trajectories. Interconnect nets then couple those trajectories through fanout, loading, and simultaneous switching. A useful warm start must exploit both repetition and coupling.
+
+Existing learned circuit methods expose three structural gaps. Direct response predictors place model error in the reported waveform~\cite{cerny2022deep}. Learned pseudo-transient methods target direct-current operating points and tune continuation parameters or pseudo elements~\cite{xing2022boa,jin2025gpta,jin2025mlpta}. Generic whole-graph predictors tie model cost and training support to the global circuit size. None of these structures separates reusable standard-cell behavior from the coupling that appears after cells connect.
+
+We call this separation \emph{standard-cell semantic divide and conquer}. A local model learns the behavior shared by one cell type. A global model resolves only the overlap among local predictions. This decomposition matches the netlist hierarchy and creates a stable learning unit across circuit sizes. It also places learning at a low-risk point in the solver: the model suggests an initial state, while Newton iteration still computes and checks the physical solution.
+
+\system{} implements this decomposition with two learned stages. Each cell type owns a proposer that predicts the correction from a native initial state toward the converged stage state. The proposer reads local solver history, the Newton index, the $g_{\min}$ continuation value, and one-hop cell context. Multiple proposers can assign different candidates to a shared net. A conflict-aware aggregator uses pin roles, candidate statistics, the transistor netlist graph, and cell-level supernodes to produce one global correction. Figure~\ref{fig:overview} shows the resulting solver path.
+
+\begin{figure}[t]
+  \centering
+  \resizebox{\columnwidth}{!}{\input{figures/architecture}}
+  \caption{\textbf{CellWarm confines learning to the Newton initial state.} Type-shared proposers predict local corrections, the aggregator resolves shared-net conflicts, and native guards select the learned or native start.}
+  \label{fig:overview}
+\end{figure}
+
+Solver ownership provides the accuracy contract. Before injection, \system{} checks vector dimensions, finite values, physical ranges, and the nonlinear residual. A failed check selects the native initial state. Newton stagnation triggers a restart from the same stage boundary. The native device models, integration method, damping, and convergence criteria remain unchanged. Thus, every accepted waveform satisfies the same solver tests as the baseline.
+
+This paper makes three contributions:
+\begin{enumerate}[leftmargin=*,itemsep=1pt,topsep=2pt]
+  \item \textbf{Semantic learning unit.} We formulate transient warm starting as type-shared local correction followed by graph-based global coupling. This formulation supports \CoverageForty{} validated-cell coverage and transfers one trained cell model across unseen instance counts.
+  \item \textbf{Conflict-aware solver assistance.} We design proposer and aggregator models around solver history, pin semantics, shared-net disagreement, and cell supernodes. The full design reduces Newton iterations by \NewtonReduction{}, while the aggregator contributes \MeanAggregatorGain{} over proposal averaging.
+  \item \textbf{Native accuracy contract.} We integrate residual and range guards with stage-level restart. Across \NumTestStages{} paired stages, \system{} preserves baseline convergence within \ConvergenceDelta{}, reaches maximum waveform error \WaveformAbsError{}, and achieves \HeadlineSpeedup{} end-to-end speedup including all learning overheads.
+\end{enumerate}
+
+The evaluation spans a licensed 40-nm standard-cell library and the public ASAP7 predictive kit~\cite{clark2016asap7}. It separates in-distribution circuits, unseen topologies, scale extrapolation, switching stress, and cross-process transfer. The results connect each design choice to a solver-level outcome and show that the largest gains occur in stages with high baseline Newton cost.
+
+The rest of the paper defines the warm-start contract (Section~\ref{sec:background}), presents the two-level design (Section~\ref{sec:design}), describes the implementation (Section~\ref{sec:implementation}), evaluates solver outcomes (Section~\ref{sec:evaluation}), and positions \system{} among circuit acceleration methods (Section~\ref{sec:related}).
+

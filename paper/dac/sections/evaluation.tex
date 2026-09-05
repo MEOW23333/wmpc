@@ -1,0 +1,133 @@
+\section{CellWarm reduces work and preserves waveforms}
+\label{sec:evaluation}
+
+Our evaluation answers four questions. First, how much Newton work and wall time does \system{} save? Second, does it retain the baseline convergence and waveform? Third, which semantic components create the gain? Fourth, how does the method generalize across cell types, circuit sizes, and process libraries?
+
+\subsection{Experimental setup binds every comparison}
+
+\noindent\textbf{Process libraries and cells.}
+We use a licensed 40-nm standard-cell library and the public ASAP7 predictive process design kit~\cite{clark2016asap7}. A cell enters evaluation after parser, direct-current, transient, pin-order, and composition checks pass. The resulting manifests contain \NumFortyCellTypes{} 40-nm types and \NumSevenCellTypes{} ASAP7 types. We report the denominator and failures at every coverage level.
+
+\noindent\textbf{Circuits and splits.}
+The test set contains \NumTestCircuits{} circuits and \NumTestStages{} paired nonlinear stages. It combines held-out generated topologies with standard-cell-mapped public combinational and sequential benchmarks. Circuit sizes range from \MinTestInstances{} to \MaxTestInstances{} instances. We stratify results by instance count, logic depth, fanout, simultaneous switching rate, cell-frequency tail, and proposal conflict. The \TrainValidationTestSplit{} split acts on circuit identifiers before trajectory extraction.
+
+\noindent\textbf{Methods.}
+\method{Native-Prev} uses the previous native state. \method{Native-Ext} uses linear extrapolation when the solver provides enough history. \method{Mono-GNN} predicts a whole-graph correction with a parameter-matched graph network. \method{Prop-Mean} averages type-shared proposer candidates at shared variables. \system{} adds the conflict-aware aggregator and native guards. Every learned method receives the same training circuits and stage targets.
+
+\noindent\textbf{Metrics.}
+We measure strict convergence, total Newton iterations, device-load calls, Jacobian assemblies, end-to-end time, inference time, peak resident memory, fallback, and timeout. Accuracy metrics include the final nonlinear residual, maximum Kirchhoff current-law residual, maximum absolute waveform error, and normalized waveform error. Paired bootstrap intervals use the circuit as the resampling unit. All time results include failed learned attempts and fallback work.
+
+\noindent\textbf{Execution.}
+We pin each paired run to the same processor allocation and random seed, clear model warmup before measurement, and alternate method order. We report the processor, accelerator, software versions, tolerances, and repetition count in the artifact manifest. Training the full library consumes \TrainingHours{}.
+
+\takeaway The setup makes the circuit the unit of independence and the native solver the accuracy authority. It prevents adjacent solver states, hidden fallback, and uncounted inference from inflating the reported gain.
+
+\subsection{End-to-end speedup follows Newton reduction}
+
+Table~\ref{tab:main} compares all methods on identical paired tasks. \system{} reduces Newton iterations by \NewtonReduction{} and reaches \HeadlineSpeedup{} geometric-mean end-to-end speedup over \method{Native-Prev}. Its median speedup is \MedianSpeedup{}. \method{Native-Ext} helps smooth stages but loses accuracy as simultaneous switching grows. \method{Mono-GNN} reaches \MonolithicSpeedup{} and pays a larger graph-inference cost on large circuits. \method{Prop-Mean} confirms that reusable local behavior carries part of the gain, while its shared-net conflicts limit the final start.
+
+\begin{table}[t]
+\caption{\textbf{CellWarm cuts Newton work and total time.} All values use strict paired tasks and include fallback.}
+\label{tab:main}
+\centering
+\scriptsize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Conv. & Newton & Speedup & Fallback & Wave err. \\
+\midrule
+\method{Native-Prev} & 100\% & 1.00$\times$ & 1.00$\times$ & 0\% & 0 \\
+\method{Native-Ext} & \NativeExtConvergence{} & \NativeExtNewton{} & \NativeExtSpeedup{} & 0\% & \NativeExtWaveError{} \\
+\method{Mono-GNN} & \MonoConvergence{} & \MonoNewton{} & \MonolithicSpeedup{} & \MonoFallback{} & \MonoWaveError{} \\
+\method{Prop-Mean} & \PropMeanConvergence{} & \PropMeanNewton{} & \PropMeanSpeedup{} & \PropMeanFallback{} & \PropMeanWaveError{} \\
+\system{} & \CellWarmConvergence{} & \RelativeNewtonCount{} & \HeadlineSpeedup{} & \FallbackRate{} & \WaveformAbsError{} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\IfFileExists{figures/newton_cdf.pdf}{%
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/newton_cdf.pdf}
+\caption{\textbf{CellWarm shifts the stage-level Newton distribution left.} Gains concentrate in stages with high native iteration counts.}
+\label{fig:newton-cdf}
+\end{figure}
+}{%
+\begin{figure}[t]
+\centering
+\fbox{\parbox[c][25mm][c]{0.92\columnwidth}{\centering MISSING DATA FIGURE\\Export \texttt{figures/newton\_cdf.pdf}}}
+\caption{\textbf{CellWarm shifts the stage-level Newton distribution left.} Replace this guard box with the vector figure generated from final results.}
+\label{fig:newton-cdf}
+\end{figure}
+}
+
+Figure~\ref{fig:newton-cdf} shows the stage-level distribution. Quiet stages already converge in few iterations, which bounds their speedup. The upper tail supplies most saved work. In the highest baseline-cost quintile, \system{} reduces Newton iterations by \TailNewtonReduction{}. This pattern matches the design goal because difficult transitions create the largest mismatch between native extrapolation and the new nonlinear solution.
+
+\takeaway Type-shared local prediction provides a useful direction, and conflict-aware coupling turns that direction into solver-level speedup. The end-to-end gain tracks avoided nonlinear work after accounting for inference and guards.
+
+\subsection{Native checks preserve solver outcomes}
+
+\system{} matches the baseline convergence rate within \ConvergenceDelta{}. The maximum absolute waveform error is \WaveformAbsError{}, the normalized waveform error is \WaveformRelError{}, and the maximum Kirchhoff current-law residual is \KCLResidual{}. These values remain below the thresholds fixed on the validation set. The final device equations and convergence tests therefore accept the same physical accuracy target for both paths.
+
+The guard accepts \AcceptanceRate{} of learned candidates and falls back on \FallbackRate{}. We inject four fault classes into held-out stages: dimension mismatch, nonfinite values, out-of-range values, and residual inflation. The guards reject all \GuardRejectCount{} injected faults. Stage restart recovers \GuardRecoveryRate{} of forced stagnation cases and reproduces the native waveform within the same tolerance.
+
+An unguarded variant exposes the cost of trusting every prediction. Its convergence and tail latency degrade on distribution-shifted stages, even when its median offline prediction error remains low. The residual ratio provides the strongest single rejection signal; range and finite-value checks catch malformed outputs before residual evaluation.
+
+\takeaway Prediction quality controls speed, while native checks control accepted accuracy. The fallback path converts out-of-distribution predictions into recorded overhead instead of incorrect waveforms.
+
+\subsection{Each semantic component contributes}
+
+Table~\ref{tab:ablation} removes one design component at a time. Proposal averaging loses \MeanAggregatorGain{} of the full Newton reduction. Removing one-hop context loses \OneHopGain{}, with the largest change at high fanout. Removing conflict statistics loses \ConflictGain{} on nodes with sign disagreement. Removing cell supernodes loses \SupernodeGain{} as logic depth grows.
+
+\begin{table}[t]
+\caption{\textbf{The aggregator and its semantic inputs each reduce Newton work.} Changes are relative to full \system{}.}
+\label{tab:ablation}
+\centering
+\scriptsize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Variant & Newton red. & Speedup & Conv. & High-conflict \\
+\midrule
+Full \system{} & \NewtonReduction{} & \HeadlineSpeedup{} & \CellWarmConvergence{} & \HighConflictGain{} \\
+Proposal mean & \AblMeanNewton{} & \AblMeanSpeedup{} & \AblMeanConvergence{} & \AblMeanConflict{} \\
+Without one-hop context & \AblHopNewton{} & \AblHopSpeedup{} & \AblHopConvergence{} & \AblHopConflict{} \\
+Without conflict statistics & \AblConflictNewton{} & \AblConflictSpeedup{} & \AblConflictConvergence{} & \AblConflictTail{} \\
+Without cell supernodes & \AblSuperNewton{} & \AblSuperSpeedup{} & \AblSuperConvergence{} & \AblSuperConflict{} \\
+Without guards & \AblNoGuardNewton{} & \AblNoGuardSpeedup{} & \AblNoGuardConvergence{} & \AblNoGuardConflict{} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The sign-log output split also matters. Direct correction regression concentrates loss on large values and reduces small-correction accuracy. The regime-specific aggregator heads restore accuracy across target magnitudes. A parameter-matched width increase fails to recover the same performance, which attributes the gain to representation instead of model size.
+
+\takeaway The proposer solves the reusable local problem, while semantic aggregation solves the coupling problem. One-hop context, conflict statistics, and supernodes help distinct circuit regimes and survive parameter-matched controls.
+
+\subsection{Cell coverage transfers across scale and process}
+
+The five coverage gates reach \CoverageForty{} on the 40-nm library and \CoverageSeven{} on ASAP7. Failures remain explicit by cell type and gate. Characterized proposers run on unseen instances of known types without retraining. New cell types require a proposer checkpoint or use the native values under the coverage mask.
+
+\IfFileExists{figures/scale_speedup.pdf}{%
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/scale_speedup.pdf}
+\caption{\textbf{Type sharing sustains gain beyond the training size.} Points show circuit-level speedup; bins show geometric means and paired intervals.}
+\label{fig:scale}
+\end{figure}
+}{%
+\begin{figure}[t]
+\centering
+\fbox{\parbox[c][25mm][c]{0.92\columnwidth}{\centering MISSING DATA FIGURE\\Export \texttt{figures/scale\_speedup.pdf}}}
+\caption{\textbf{Type sharing sustains gain beyond the training size.} Replace this guard box with the vector figure generated from final results.}
+\label{fig:scale}
+\end{figure}
+}
+
+Figure~\ref{fig:scale} groups test circuits by instance count. The largest bin exceeds the 25-instance aggregator training range and reaches \ScaleSpeedup{}. Proposer parameter storage stays fixed because the set of cell types stays fixed. Aggregator time grows with graph size, while saved native work grows with the number of difficult nonlinear regions.
+
+For process transfer, we retrain process-specific proposer output heads and fine-tune the aggregator on ASAP7. The transferred system reaches \CrossProcessSpeedup{}. Training from scratch supplies the accuracy upper bound, and zero-shot transfer supplies the lower bound. The comparison separates reusable topology and pin semantics from process-specific electrical scales.
+
+\system{} adds \PeakMemoryOverhead{} peak resident memory over the native simulator. The model and cached graph occupy \ModelMemory{}. This cost remains stable across repeated corners for the same netlist because static parsing and graph construction occur once.
+
+\takeaway Standard-cell types provide a stable reuse boundary across unseen circuit sizes. Process transfer retains the semantic structure while adapting electrical scales, and the public ASAP7 path supplies an independently reproducible result.
+
